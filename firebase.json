@@ -2,12 +2,12 @@
   "proyectos": {
     "emerson_hacks": {
       "nombre": "Emerson Hacks",
-      "cliente": "Por definir",
+      "cliente": "definir definir",
       "activo": true,
       "expira": "2026-10-14",
       "precio": "$15 USD",
       "pagado": true,
-      "ultima_actualizacion": "2026-02-12",
+      "ultima_actualizacion": "2026-09-11",
       "url_demo": "https://torhshwvve.github.io/emersonhacks/",
       "tipo": "Mods Gaming & Social Services"
     },
