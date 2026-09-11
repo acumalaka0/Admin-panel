@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 Panel Admin - Control de Proyectos</title>
+    <title>🎮 Panel Admin - Kontrol Proyek</title>
     <style>
         * {
             margin: 0;
@@ -32,7 +32,7 @@
                 radial-gradient(circle at 80% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
         }
 
-        /* Login Screen */
+        /* Layar Login */
         .login-container {
             display: flex;
             justify-content: center;
@@ -136,7 +136,7 @@
             display: none;
         }
 
-        /* Main Panel */
+        /* Panel Utama */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -417,136 +417,136 @@
     </style>
 </head>
 <body>
-    <!-- Login Screen -->
+    <!-- Layar Login -->
     <div class="login-container" id="loginScreen">
         <div class="login-box">
             <div class="login-logo">🎮</div>
             <h1 class="login-title">Panel Admin</h1>
-            <p class="login-subtitle">Control de Proyectos Web</p>
+            <p class="login-subtitle">Pengelolaan Proyek Web</p>
             
             <form id="loginForm" onsubmit="return login(event)">
                 <div class="form-group">
-                    <label class="form-label">Usuario</label>
-                    <input type="text" id="username" class="form-input" placeholder="Ingresa tu usuario" required>
+                    <label class="form-label">Nama Pengguna</label>
+                    <input type="text" id="username" class="form-input" placeholder="Masukkan username" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Contraseña</label>
-                    <input type="password" id="password" class="form-input" placeholder="Ingresa tu contraseña" required>
+                    <label class="form-label">Kata Sandi</label>
+                    <input type="password" id="password" class="form-input" placeholder="Masukkan kata sandi" required>
                 </div>
                 
-                <button type="submit" class="btn-login">🔓 Acceder</button>
+                <button type="submit" class="btn-login">🔓 Masuk</button>
                 
                 <div class="error-msg" id="errorMsg">
-                    ❌ Usuario o contraseña incorrectos
+                    ❌ Nama pengguna atau kata sandi salah
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- Main Panel -->
+    <!-- Panel Utama -->
     <div class="container" id="mainPanel">
         <header>
             <div class="header-left">
-                <h1>🎮 Panel de Control de Proyectos</h1>
-                <p style="color: #888;">Sistema de gestión y protección</p>
+                <h1>🎮 Panel Kontrol Proyek</h1>
+                <p style="color: #888;">Sistem manajemen dan perlindungan</p>
             </div>
             <div class="header-right">
                 <div class="user-info">
-                    👤 Usuario: <strong id="currentUser">TORRES</strong>
+                    👤 Pengguna: <strong id="currentUser">TORRES</strong>
                 </div>
-                <button class="btn-logout" onclick="logout()">🚪 Cerrar Sesión</button>
+                <button class="btn-logout" onclick="logout()">🚪 Keluar</button>
             </div>
         </header>
 
         <div class="stats" id="stats">
             <div class="stat-card">
                 <div class="stat-number" id="total-proyectos">0</div>
-                <div class="stat-label">Total Proyectos</div>
+                <div class="stat-label">Total Proyek</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" style="color: var(--success);" id="activos">0</div>
-                <div class="stat-label">Activos</div>
+                <div class="stat-label">Aktif</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" style="color: var(--danger);" id="inactivos">0</div>
-                <div class="stat-label">Inactivos</div>
+                <div class="stat-label">Nonaktif</div>
             </div>
             <div class="stat-card">
                 <div class="stat-number" style="color: var(--warning);" id="sin-pagar">0</div>
-                <div class="stat-label">Sin Pagar</div>
+                <div class="stat-label">Belum Bayar</div>
             </div>
         </div>
 
         <div id="proyectos-lista"></div>
     </div>
 
-    <!-- Modal para agregar tiempo -->
+    <!-- Modal Tambah Durasi Waktu -->
     <div class="modal" id="modalTiempo">
         <div class="modal-content">
-            <h2 class="modal-title">⏰ Agregar Tiempo</h2>
-            <p style="color: #888; margin-bottom: 20px;">Selecciona cuánto tiempo agregar a <strong id="proyectoNombre"></strong></p>
+            <h2 class="modal-title">⏰ Tambah Waktu</h2>
+            <p style="color: #888; margin-bottom: 20px;">Pilih durasi waktu yang ingin ditambahkan ke <strong id="proyectoNombre"></strong></p>
             
             <div class="tiempo-selector">
                 <div class="tiempo-option" onclick="agregarTiempo(7)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>7 días</div>
+                    <div>7 Hari</div>
                 </div>
                 <div class="tiempo-option" onclick="agregarTiempo(15)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>15 días</div>
+                    <div>15 Hari</div>
                 </div>
                 <div class="tiempo-option" onclick="agregarTiempo(30)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>1 mes</div>
+                    <div>1 Bulan</div>
                 </div>
                 <div class="tiempo-option" onclick="agregarTiempo(60)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>2 meses</div>
+                    <div>2 Bulan</div>
                 </div>
                 <div class="tiempo-option" onclick="agregarTiempo(90)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>3 meses</div>
+                    <div>3 Bulan</div>
                 </div>
                 <div class="tiempo-option" onclick="agregarTiempo(180)">
                     <div style="font-size: 2rem;">📅</div>
-                    <div>6 meses</div>
+                    <div>6 Bulan</div>
                 </div>
             </div>
 
             <div style="margin-top: 20px;">
-                <label class="form-label">O ingresa días personalizados:</label>
-                <input type="number" id="diasCustom" class="form-input" placeholder="Ej: 45" min="1">
+                <label class="form-label">Atau masukkan jumlah hari kustom:</label>
+                <input type="number" id="diasCustom" class="form-input" placeholder="Contoh: 45" min="1">
             </div>
 
             <div class="modal-buttons">
-                <button class="btn btn-tiempo" onclick="agregarTiempoCustom()">✓ Confirmar</button>
-                <button class="btn btn-editar" onclick="cerrarModal()">✗ Cancelar</button>
+                <button class="btn btn-tiempo" onclick="agregarTiempoCustom()">✓ Konfirmasi</button>
+                <button class="btn btn-editar" onclick="cerrarModal()">✗ Batal</button>
             </div>
         </div>
     </div>
 
     <script>
         // ============================================
-        // CONFIGURACIÓN DE SEGURIDAD
+        // KONFIGURASI FIREBASE & KEAMANAN
         // ============================================
         
-        // Credenciales (ofuscadas con Base64)
+        // URL Firebase Realtime Database
+        const FIREBASE_URL = "https://adminpaneluser-2467b-default-rtdb.firebaseio.com/proyectos";
+
+        // Kredensial Pengguna (Base64)
         const AUTH = {
-            // Usuario: TORRES (Base64)
-            user: atob('VE9SUkVT'),
-            // Contraseña: TU_CONTRASEÑA_SEGURA_123 (Base64) - CÁMBIALA!
-            pass: atob('VFVfQ09OVFJBU0VOQl9TRUdVUkFfMTIz')
+            user: atob('VE9SUkVT'), // Username: TORRES
+            pass: atob('VFVfQ09OVFJBU0VOQl9TRUdVUkFfMTIz') // Password
         };
 
         // ============================================
-        // SISTEMA DE AUTENTICACIÓN
+        // SISTEM AUTENTIKASI
         // ============================================
         
         let proyectosData = null;
         let proyectoActual = null;
 
-        // Verificar si ya hay sesión activa
         window.addEventListener('DOMContentLoaded', function() {
             const sesion = sessionStorage.getItem('admin_logged');
             if (sesion === 'true') {
@@ -558,16 +558,14 @@
             event.preventDefault();
             
             const usuario = document.getElementById('username').value;
-            const contraseña = document.getElementById('password').value;
+            const contrasena = document.getElementById('password').value;
             
-            // Verificar credenciales
-            if (usuario === AUTH.user && contraseña === AUTH.pass) {
+            if (usuario === AUTH.user && contrasena === AUTH.pass) {
                 sessionStorage.setItem('admin_logged', 'true');
                 mostrarPanel();
                 return false;
             }
             
-            // Error
             document.getElementById('errorMsg').style.display = 'block';
             document.getElementById('password').value = '';
             
@@ -593,25 +591,30 @@
         }
 
         // ============================================
-        // GESTIÓN DE PROYECTOS
+        // GESTI PROYEK DENGAN FIREBASE
         // ============================================
 
         function cargarProyectos() {
-            fetch('proyectos.json?t=' + Date.now())
+            fetch(`${FIREBASE_URL}.json?t=${Date.now()}`)
                 .then(r => r.json())
                 .then(data => {
-                    proyectosData = data;
-                    renderProyectos(data);
-                    actualizarEstadisticas(data);
+                    proyectosData = data || {};
+                    renderProyectos(proyectosData);
+                    actualizarEstadisticas(proyectosData);
                 })
                 .catch(error => {
-                    alert('⚠️ Error al cargar proyectos: ' + error.message);
+                    alert('⚠️ Gagal memuat data dari Firebase: ' + error.message);
                 });
         }
 
         function renderProyectos(proyectos) {
             const lista = document.getElementById('proyectos-lista');
             lista.innerHTML = '';
+
+            if (Object.keys(proyectos).length === 0) {
+                lista.innerHTML = '<p style="text-align: center; color: #888; padding: 40px;">Tidak ada proyek ditemukan di Firebase Database.</p>';
+                return;
+            }
 
             for (let [id, proyecto] of Object.entries(proyectos)) {
                 const expira = new Date(proyecto.expira);
@@ -624,35 +627,35 @@
                     <div class="proyecto-header">
                         <div>
                             <div class="proyecto-titulo">${proyecto.nombre}</div>
-                            <div style="color: #888; margin-top: 5px;">Cliente: ${proyecto.cliente} • ID: ${id}</div>
+                            <div style="color: #888; margin-top: 5px;">Klien: ${proyecto.cliente} • ID: ${id}</div>
                         </div>
                         <span class="badge ${proyecto.activo ? 'activo' : 'inactivo'}">
-                            ${proyecto.activo ? '✅ Activo' : '❌ Inactivo'}
+                            ${proyecto.activo ? '✅ Aktif' : '❌ Nonaktif'}
                         </span>
                     </div>
 
                     <div class="proyecto-info">
                         <div class="info-item">
-                            <div class="info-label">💰 Precio</div>
+                            <div class="info-label">💰 Harga</div>
                             <div class="info-value">${proyecto.precio}</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">💳 Estado Pago</div>
+                            <div class="info-label">💳 Status Pembayaran</div>
                             <div class="info-value" style="color: ${proyecto.pagado ? 'var(--success)' : 'var(--danger)'};">
-                                ${proyecto.pagado ? 'Pagado ✓' : 'Pendiente ✗'}
+                                ${proyecto.pagado ? 'Lunas ✓' : 'Belum Bayar ✗'}
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">📅 Expira</div>
+                            <div class="info-label">📅 Tanggal Kedaluwarsa</div>
                             <div class="info-value">
                                 ${proyecto.expira}
                                 <div style="font-size: 0.85rem; color: ${diasRestantes <= 7 ? 'var(--warning)' : '#888'};">
-                                    ${diasRestantes > 0 ? `(${diasRestantes} días restantes)` : '(Expirado)'}
+                                    ${diasRestantes > 0 ? `(${diasRestantes} hari tersisa)` : '(Kedaluwarsa)'}
                                 </div>
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">🔄 Actualizado</div>
+                            <div class="info-label">🔄 Pembaruan Terakhir</div>
                             <div class="info-value">${proyecto.ultima_actualizacion}</div>
                         </div>
                     </div>
@@ -660,19 +663,19 @@
                     <div class="controles">
                         <button class="btn ${proyecto.activo ? 'btn-desactivar' : 'btn-activar'}" 
                                 onclick="toggleActivacion('${id}', ${!proyecto.activo})">
-                            ${proyecto.activo ? '🔴 Desactivar Sitio' : '🟢 Activar Sitio'}
+                            ${proyecto.activo ? '🔴 Nonaktifkan Situs' : '🟢 Aktifkan Situs'}
                         </button>
                         
                         <button class="btn btn-tiempo" onclick="abrirModalTiempo('${id}')">
-                            ⏰ Agregar Tiempo
+                            ⏰ Tambah Waktu
                         </button>
                         
                         <button class="btn btn-editar" onclick="togglePago('${id}', ${!proyecto.pagado})">
-                            ${proyecto.pagado ? '💳 Marcar No Pagado' : '💰 Marcar Pagado'}
+                            ${proyecto.pagado ? '💳 Tandai Belum Bayar' : '💰 Tandai Lunas'}
                         </button>
                         
                         <a href="${proyecto.url_demo}" class="btn btn-editar" target="_blank" style="text-decoration: none;">
-                            🌐 Ver Sitio
+                            🌐 Lihat Situs
                         </a>
                     </div>
                 `;
@@ -696,24 +699,43 @@
         }
 
         // ============================================
-        // FUNCIONES DE CONTROL
+        // OPERASI KONTROL FIREBASE
         // ============================================
+
+        function actualizarProyekDiFirebase(id, dataUpdate) {
+            fetch(`${FIREBASE_URL}/${id}.json`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dataUpdate)
+            })
+            .then(r => r.json())
+            .then(() => {
+                cargarProyectos();
+            })
+            .catch(err => {
+                alert('⚠️ Gagal menyimpan ke Firebase: ' + err.message);
+            });
+        }
 
         function toggleActivacion(id, nuevoEstado) {
             const proyecto = proyectosData[id];
-            const accion = nuevoEstado ? 'activar' : 'desactivar';
+            const aksi = nuevoEstado ? 'mengaktifkan' : 'menonaktifkan';
             
-            if (confirm(`¿Estás seguro de ${accion} el sitio "${proyecto.nombre}"?`)) {
-                proyectosData[id].activo = nuevoEstado;
-                proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-                guardarCambios();
+            if (confirm(`Apakah Anda yakin ingin ${aksi} situs "${proyecto.nombre}"?`)) {
+                const update = {
+                    activo: nuevoEstado,
+                    ultima_actualizacion: new Date().toISOString().split('T')[0]
+                };
+                actualizarProyekDiFirebase(id, update);
             }
         }
 
         function togglePago(id, nuevoPago) {
-            proyectosData[id].pagado = nuevoPago;
-            proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-            guardarCambios();
+            const update = {
+                pagado: nuevoPago,
+                ultima_actualizacion: new Date().toISOString().split('T')[0]
+            };
+            actualizarProyekDiFirebase(id, update);
         }
 
         function abrirModalTiempo(id) {
@@ -734,13 +756,17 @@
             const fechaActual = new Date(proyecto.expira);
             fechaActual.setDate(fechaActual.getDate() + dias);
             
-            proyectosData[proyectoActual].expira = fechaActual.toISOString().split('T')[0];
-            proyectosData[proyectoActual].ultima_actualizacion = new Date().toISOString().split('T')[0];
+            const nuevaFechaStr = fechaActual.toISOString().split('T')[0];
+            
+            const update = {
+                expira: nuevaFechaStr,
+                ultima_actualizacion: new Date().toISOString().split('T')[0]
+            };
             
             cerrarModal();
-            guardarCambios();
+            actualizarProyekDiFirebase(proyectoActual, update);
             
-            alert(`✅ Se agregaron ${dias} días a ${proyecto.nombre}\nNueva fecha: ${fechaActual.toLocaleDateString('es-ES')}`);
+            alert(`✅ Berhasil menambahkan ${dias} hari pada ${proyecto.nombre}\nTanggal baru: ${fechaActual.toLocaleDateString('id-ID')}`);
         }
 
         function agregarTiempoCustom() {
@@ -748,48 +774,8 @@
             if (dias && dias > 0) {
                 agregarTiempo(dias);
             } else {
-                alert('⚠️ Ingresa un número válido de días');
+                alert('⚠️ Masukkan jumlah hari yang valid');
             }
-        }
-
-        function guardarCambios() {
-            const jsonStr = JSON.stringify(proyectosData, null, 2);
-            
-            // Mostrar instrucciones para actualizar
-            const modal = document.createElement('div');
-            modal.className = 'modal active';
-            modal.innerHTML = `
-                <div class="modal-content" style="max-width: 700px;">
-                    <h2 class="modal-title">📝 Actualizar proyectos.json</h2>
-                    <p style="color: #888; margin-bottom: 20px;">
-                        Copia este contenido y actualiza el archivo <strong>proyectos.json</strong> en tu repositorio de GitHub:
-                    </p>
-                    <textarea id="jsonOutput" style="width: 100%; height: 300px; background: #000; color: #0f0; 
-                        padding: 15px; border-radius: 8px; border: 1px solid #333; font-family: monospace; 
-                        font-size: 0.9rem;" readonly>${jsonStr}</textarea>
-                    <div class="modal-buttons" style="margin-top: 20px;">
-                        <button class="btn btn-tiempo" onclick="copiarJSON()">📋 Copiar al Portapapeles</button>
-                        <button class="btn btn-editar" onclick="cerrarModalGuardar()">✓ Cerrar</button>
-                    </div>
-                    <p style="color: #666; font-size: 0.85rem; margin-top: 15px;">
-                        💡 Los cambios se aplicarán en 1-2 minutos después de actualizar el archivo en GitHub
-                    </p>
-                </div>
-            `;
-            document.body.appendChild(modal);
-        }
-
-        function copiarJSON() {
-            const textarea = document.getElementById('jsonOutput');
-            textarea.select();
-            document.execCommand('copy');
-            alert('✅ JSON copiado al portapapeles');
-        }
-
-        function cerrarModalGuardar() {
-            const modal = document.querySelector('.modal.active:last-of-type');
-            if (modal) modal.remove();
-            cargarProyectos(); // Recargar para mostrar cambios
         }
     </script>
 </body>
