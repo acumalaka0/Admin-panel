@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -35,7 +35,7 @@
         }
 
         /* ============================================
-           LOGIN SCREEN
+           LAYAR LOGIN
            ============================================ */
         .login-container {
             display: flex;
@@ -141,7 +141,7 @@
         }
 
         /* ============================================
-           MAIN PANEL - Usando los estilos del panel mejorado
+           PANEL UTAMA
            ============================================ */
         .container {
             max-width: 1400px;
@@ -202,7 +202,7 @@
             background: rgba(255, 0, 110, 0.3);
         }
 
-        /* Tabs */
+        /* Tab */
         .tabs {
             display: flex;
             gap: 10px;
@@ -245,7 +245,7 @@
             display: block;
         }
 
-        /* Stats Cards */
+        /* Kartu Statistik */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -286,7 +286,7 @@
         .stat-card.warning .stat-number { color: var(--warning); }
         .stat-card.info .stat-number { color: var(--info); }
 
-        /* Quick Actions */
+        /* Aksi Cepat */
         .quick-actions {
             background: var(--card-bg);
             padding: 20px;
@@ -346,7 +346,7 @@
             color: var(--info);
         }
 
-        /* Search and Filters */
+        /* Pencarian dan Filter */
         .search-filter {
             background: var(--card-bg);
             padding: 20px;
@@ -387,7 +387,7 @@
             cursor: pointer;
         }
 
-        /* Projects List */
+        /* Daftar Proyek */
         .proyecto {
             background: var(--card-bg);
             padding: 25px;
@@ -621,7 +621,7 @@
             background: rgba(255, 0, 110, 0.2);
         }
 
-        /* Status Bar */
+        /* Bilah Status */
         .status-bar {
             position: fixed;
             bottom: 20px;
@@ -660,7 +660,7 @@
             50% { opacity: 0.5; }
         }
 
-        /* Activity Log */
+        /* Log Aktivitas */
         .activity-log {
             background: var(--card-bg);
             padding: 25px;
@@ -694,7 +694,7 @@
             font-weight: 600;
         }
 
-        /* Alerts Section */
+        /* Bagian Peringatan */
         .alerts-section {
             background: var(--card-bg);
             padding: 25px;
@@ -726,7 +726,7 @@
             font-size: 1.5rem;
         }
 
-        /* Analytics - Clicks por Día */
+        /* Analitik - Klik per Hari */
         .analytics-proyecto {
             background: var(--card-bg);
             border: 1px solid var(--gray);
@@ -877,38 +877,38 @@
 <body>
 
     <!-- ============================================
-         LOGIN SCREEN
+         LAYAR LOGIN
          ============================================ -->
     <div id="login-container" class="login-container">
         <div class="login-box">
             <div class="login-logo">🎮</div>
             <h1 class="login-title">Panel Admin ALEXIS</h1>
-            <p class="login-subtitle">Sistema de Control de Proyectos</p>
+            <p class="login-subtitle">Sistem Kontrol Proyek</p>
             
             <div class="form-group">
-                <label class="form-label">Usuario</label>
-                <input type="text" id="username" class="form-input" placeholder="Ingresa tu usuario" onkeydown="if(event.key==='Enter') document.getElementById('password').focus()">
+                <label class="form-label">Nama Pengguna</label>
+                <input type="text" id="username" class="form-input" placeholder="Masukkan nama pengguna" onkeydown="if(event.key==='Enter') document.getElementById('password').focus()">
             </div>
             
             <div class="form-group">
-                <label class="form-label">Contraseña</label>
+                <label class="form-label">Kata Sandi</label>
                 <input type="password" id="password" class="form-input" placeholder="••••••••" onkeydown="if(event.key==='Enter') login()">
             </div>
             
-            <button class="btn-login" onclick="login()">🚀 Iniciar Sesión</button>
+            <button class="btn-login" onclick="login()">🚀 Masuk</button>
             
             <div id="error-msg" class="error-msg">
-                ❌ Usuario o contraseña incorrectos
+                ❌ Nama pengguna atau kata sandi salah
             </div>
 
             <p style="margin-top: 30px; color: #666; font-size: 0.85rem;">
-                🔒 Acceso restringido
+                🔒 Akses Terbatas
             </p>
         </div>
     </div>
 
     <!-- ============================================
-         MAIN PANEL
+         PANEL UTAMA
          ============================================ -->
     <div id="main-container" class="container">
         
@@ -916,259 +916,265 @@
         <header>
             <div class="header-left">
                 <h1>🎮 Panel Admin ALEXIS</h1>
-                <p style="color: #888;">Sistema de Control de Proyectos</p>
+                <p style="color: #888;">Sistem Kontrol Proyek</p>
             </div>
             <div class="header-right">
                 <div class="user-info">
                     👤 <span id="usuario-nombre">Admin</span>
                 </div>
-                <button class="btn-logout" onclick="logout()">🚪 Salir</button>
+                <button class="btn-logout" onclick="logout()">🚪 Keluar</button>
             </div>
         </header>
 
-        <!-- Stats Cards -->
+        <!-- Kartu Statistik -->
         <div class="stats">
             <div class="stat-card info">
                 <div class="stat-number" id="total-proyectos">0</div>
-                <div class="stat-label">📊 Total Proyectos</div>
+                <div class="stat-label">📊 Total Proyek</div>
             </div>
             <div class="stat-card success">
                 <div class="stat-number" id="activos">0</div>
-                <div class="stat-label">✅ Activos</div>
+                <div class="stat-label">✅ Aktif</div>
             </div>
             <div class="stat-card danger">
                 <div class="stat-number" id="inactivos">0</div>
-                <div class="stat-label">❌ Inactivos</div>
+                <div class="stat-label">❌ Nonaktif</div>
             </div>
             <div class="stat-card warning">
                 <div class="stat-number" id="sin-pagar">0</div>
-                <div class="stat-label">💰 Sin Pagar</div>
+                <div class="stat-label">💰 Belum Bayar</div>
             </div>
             <div class="stat-card primary">
                 <div class="stat-number" id="en-mantenimiento">0</div>
-                <div class="stat-label">🔧 Mantenimiento</div>
+                <div class="stat-label">🔧 Pemeliharaan</div>
             </div>
             <div class="stat-card success">
                 <div class="stat-number" id="total-clicks">0</div>
-                <div class="stat-label">🛒 Total Clicks</div>
+                <div class="stat-label">🛒 Total Klik</div>
             </div>
         </div>
 
-        <!-- Quick Actions -->
+        <!-- Aksi Cepat -->
         <div class="quick-actions">
-            <h3>⚡ Acciones Rápidas</h3>
+            <h3>⚡ Aksi Cepat</h3>
             <div class="action-buttons">
                 <button class="action-btn warning" onclick="inicializarProyectos()" id="btn-inicializar" style="display:none; animation: pulse 2s infinite;">
-                    🚀 Inicializar Proyectos en Firebase
+                    🚀 Inisialisasi Proyek di Firebase
                 </button>
                 <button class="action-btn danger" onclick="bloquearNoPagados()">
-                    🔒 Bloquear sitios no pagados
+                    🔒 Blokir situs belum bayar
                 </button>
                 <button class="action-btn success" onclick="activarPagados()">
-                    ✅ Activar sitios pagados
+                    ✅ Aktifkan situs sudah bayar
                 </button>
                 <button class="action-btn warning" onclick="alertarProximosVencer()">
-                    ⏰ Ver próximos a vencer
+                    ⏰ Lihat akan segera kedaluwarsa
                 </button>
                 <button class="action-btn info" onclick="exportarReporte()">
-                    📥 Exportar reporte
+                    📥 Ekspor Laporan
                 </button>
                 <button class="action-btn info" onclick="limpiarHistorial()">
-                    🗑️ Limpiar historial
+                    🗑️ Bersihkan riwayat
                 </button>
                 <button class="action-btn success" onclick="abrirModalNuevoProyecto()">
-                    ➕ Nuevo Proyecto
+                    ➕ Proyek Baru
                 </button>
             </div>
         </div>
 
-        <!-- Tabs Navigation -->
+        <!-- Navigasi Tab -->
         <div class="tabs">
-            <button class="tab active" onclick="cambiarTab('proyectos')">📁 Proyectos</button>
-            <button class="tab" onclick="cambiarTab('historial')">📜 Historial</button>
-            <button class="tab" onclick="cambiarTab('alertas')">⚠️ Alertas</button>
-            <button class="tab" onclick="cambiarTab('analytics')">📊 Clicks Compra</button>
-            <button class="tab" onclick="cambiarTab('usuarios')">👤 Usuarios</button>
+            <button class="tab active" onclick="cambiarTab('proyectos')">📁 Proyek</button>
+            <button class="tab" onclick="cambiarTab('historial')">📜 Riwayat</button>
+            <button class="tab" onclick="cambiarTab('alertas')">⚠️ Peringatan</button>
+            <button class="tab" onclick="cambiarTab('analytics')">📊 Klik Pembelian</button>
+            <button class="tab" onclick="cambiarTab('usuarios')">👤 Pengguna</button>
         </div>
 
-        <!-- TAB: Proyectos -->
+        <!-- TAB: Proyek -->
         <div id="tab-proyectos" class="tab-content active">
-            <!-- Search and Filter -->
+            <!-- Pencarian dan Filter -->
             <div class="search-filter">
                 <div class="search-box">
                     <input type="text" class="search-input" id="search-input" 
-                           placeholder="🔍 Buscar proyecto..." 
+                           placeholder="🔍 Cari proyek..." 
                            oninput="filtrarProyectos()">
                     <select class="filter-select" id="filter-estado" onchange="filtrarProyectos()">
-                        <option value="todos">Todos</option>
-                        <option value="activos">Activos</option>
-                        <option value="inactivos">Inactivos</option>
-                        <option value="pagados">Pagados</option>
-                        <option value="no-pagados">No Pagados</option>
-                        <option value="mantenimiento">En Mantenimiento</option>
+                        <option value="todos">Semua</option>
+                        <option value="activos">Aktif</option>
+                        <option value="inactivos">Nonaktif</option>
+                        <option value="pagados">Sudah Bayar</option>
+                        <option value="no-pagados">Belum Bayar</option>
+                        <option value="mantenimiento">Dalam Pemeliharaan</option>
                     </select>
                 </div>
             </div>
 
-            <!-- Projects List -->
+            <!-- Daftar Proyek -->
             <div id="proyectos-lista"></div>
         </div>
 
-        <!-- TAB: Historial -->
+        <!-- TAB: Riwayat -->
         <div id="tab-historial" class="tab-content">
             <div class="activity-log">
-                <h3>📜 Historial de Actividad</h3>
+                <h3>📜 Riwayat Aktivitas</h3>
                 <div id="log-container"></div>
             </div>
         </div>
 
-        <!-- TAB: Alertas -->
+        <!-- TAB: Peringatan -->
         <div id="tab-alertas" class="tab-content">
             <div class="alerts-section">
-                <h3>⚠️ Alertas y Notificaciones</h3>
+                <h3>⚠️ Peringatan dan Notifikasi</h3>
                 <div id="alertas-container"></div>
             </div>
         </div>
 
-        <!-- TAB: Usuarios -->
+        <!-- TAB: Pengguna -->
         <div id="tab-usuarios" class="tab-content">
             <div class="alerts-section" style="margin-bottom:20px;">
-                <h3 style="margin-bottom:20px;">➕ Agregar Nuevo Usuario</h3>
+                <h3 style="margin-bottom:20px;">➕ Tambah Pengguna Baru</h3>
                 <div style="display:grid; gap:15px; max-width:500px;">
                     <div class="form-group" style="margin-bottom:0;">
-                        <label class="form-label">Usuario</label>
-                        <input type="text" id="nuevo-usuario" class="form-input" placeholder="Ej: CARLOS">
+                        <label class="form-label">Nama Pengguna</label>
+                        <input type="text" id="nuevo-usuario" class="form-input" placeholder="Contoh: CARLOS">
                     </div>
                     <div class="form-group" style="margin-bottom:0;">
-                        <label class="form-label">Contraseña</label>
-                        <input type="password" id="nueva-contrasena" class="form-input" placeholder="Contraseña segura">
+                        <label class="form-label">Kata Sandi</label>
+                        <input type="password" id="nueva-contrasena" class="form-input" placeholder="Kata sandi aman">
                     </div>
                     <div class="form-group" style="margin-bottom:0;">
-                        <label class="form-label">Repetir Contraseña</label>
-                        <input type="password" id="repetir-contrasena" class="form-input" placeholder="Repite la contraseña">
+                        <label class="form-label">Ulangi Kata Sandi</label>
+                        <input type="password" id="repetir-contrasena" class="form-input" placeholder="Ulangi kata sandi">
                     </div>
                     <button class="action-btn success" style="width:fit-content;" onclick="agregarUsuario()">
-                        💾 Guardar Usuario
+                        💾 Simpan Pengguna
                     </button>
                     <div id="msg-usuarios" style="display:none; padding:12px; border-radius:8px; font-weight:600;"></div>
                 </div>
             </div>
             <div class="alerts-section">
-                <h3 style="margin-bottom:20px;">👥 Usuarios Guardados</h3>
+                <h3 style="margin-bottom:20px;">👥 Pengguna Tersimpan</h3>
                 <div id="lista-usuarios"></div>
             </div>
         </div>
+
+        <!-- TAB: Analitik Klik -->
+        <div id="tab-analytics" class="tab-content">
             <div class="alerts-section">
                 <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:20px;">
                     <div>
-                        <h3>🛒 Clicks por Día en Botón de Compra</h3>
-                        <p style="color:#888; margin-top:6px; font-size:0.9rem;">Cuántas personas apretaron "Comprar" cada día en cada proyecto.</p>
+                        <h3>🛒 Klik per Hari pada Tombol Beli</h3>
+                        <p style="color:#888; margin-top:6px; font-size:0.9rem;">Berapa banyak orang yang menekan "Beli" setiap hari di setiap proyek.</p>
                     </div>
                     <select id="filtro-dias" class="filter-select" onchange="renderAnalytics()" style="height:42px;">
-                        <option value="7">Últimos 7 días</option>
-                        <option value="30" selected>Últimos 30 días</option>
-                        <option value="90">Últimos 90 días</option>
-                        <option value="0">Todos los días</option>
+                        <option value="7">7 Hari Terakhir</option>
+                        <option value="30" selected>30 Hari Terakhir</option>
+                        <option value="90">90 Hari Terakhir</option>
+                        <option value="0">Semua Hari</option>
                     </select>
                 </div>
                 <div id="analytics-container"></div>
             </div>
         </div>
-    <div class="status-bar">
-        <div class="status-indicator conectado" id="status-indicator"></div>
-        <span id="status-text">🟢 Firebase conectado</span>
     </div>
 
-    <!-- Modal: Agregar Tiempo -->
+    <!-- Bilah Status -->
+    <div class="status-bar">
+        <div class="status-indicator conectado" id="status-indicator"></div>
+        <span id="status-text">🟢 Firebase terhubung</span>
+    </div>
+
+    <!-- Modal: Kelola Waktu -->
     <div id="modalTiempo" class="modal">
         <div class="modal-content">
-            <h2 class="modal-title">⏰ Gestionar Tiempo</h2>
-            <p style="margin-bottom: 20px;">Proyecto: <strong id="proyectoNombre"></strong></p>
+            <h2 class="modal-title">⏰ Kelola Waktu</h2>
+            <p style="margin-bottom: 20px;">Proyek: <strong id="proyectoNombre"></strong></p>
             
-            <h4 style="color: var(--success); margin-bottom: 10px;">➕ Agregar Tiempo</h4>
+            <h4 style="color: var(--success); margin-bottom: 10px;">➕ Tambah Waktu</h4>
             <div class="time-options">
-                <button class="time-btn" onclick="agregarTiempo(7)">+7 días</button>
-                <button class="time-btn" onclick="agregarTiempo(15)">+15 días</button>
-                <button class="time-btn" onclick="agregarTiempo(30)">+30 días</button>
-                <button class="time-btn" onclick="agregarTiempo(60)">+60 días</button>
+                <button class="time-btn" onclick="agregarTiempo(7)">+7 hari</button>
+                <button class="time-btn" onclick="agregarTiempo(15)">+15 hari</button>
+                <button class="time-btn" onclick="agregarTiempo(30)">+30 hari</button>
+                <button class="time-btn" onclick="agregarTiempo(60)">+60 hari</button>
             </div>
 
-            <h4 style="color: var(--danger); margin-bottom: 10px; margin-top: 20px;">➖ Quitar Tiempo</h4>
+            <h4 style="color: var(--danger); margin-bottom: 10px; margin-top: 20px;">➖ Kurangi Waktu</h4>
             <div class="time-options">
-                <button class="time-btn negative" onclick="agregarTiempo(-7)">-7 días</button>
-                <button class="time-btn negative" onclick="agregarTiempo(-15)">-15 días</button>
-                <button class="time-btn negative" onclick="agregarTiempo(-30)">-30 días</button>
-                <button class="time-btn negative" onclick="agregarTiempo(-60)">-60 días</button>
+                <button class="time-btn negative" onclick="agregarTiempo(-7)">-7 hari</button>
+                <button class="time-btn negative" onclick="agregarTiempo(-15)">-15 hari</button>
+                <button class="time-btn negative" onclick="agregarTiempo(-30)">-30 hari</button>
+                <button class="time-btn negative" onclick="agregarTiempo(-60)">-60 hari</button>
             </div>
 
             <div style="margin-top: 20px;">
-                <label style="color: #888; display: block; margin-bottom: 5px;">Días personalizados:</label>
+                <label style="color: #888; display: block; margin-bottom: 5px;">Jumlah hari kustom:</label>
                 <input type="number" id="diasCustom" class="form-input" 
-                       placeholder="Ej: 45 (positivo) o -45 (negativo)">
+                       placeholder="Contoh: 45 (positif) atau -45 (negatif)">
             </div>
 
             <div class="modal-buttons">
-                <button class="btn btn-tiempo" onclick="agregarTiempoCustom()">✓ Aplicar Custom</button>
-                <button class="btn btn-desactivar" onclick="cerrarModal()">✗ Cancelar</button>
+                <button class="btn btn-tiempo" onclick="agregarTiempoCustom()">✓ Terapkan Kustom</button>
+                <button class="btn btn-desactivar" onclick="cerrarModal()">✗ Batal</button>
             </div>
         </div>
     </div>
 
-    <!-- Modal: Nuevo Proyecto -->
+    <!-- Modal: Proyek Baru -->
     <div id="modalNuevoProyecto" class="modal">
         <div class="modal-content" style="max-width:560px;">
-            <h2 class="modal-title">➕ Nuevo Proyecto</h2>
+            <h2 class="modal-title">➕ Proyek Baru</h2>
             <div style="display:grid; gap:14px;">
                 <div>
-                    <label class="form-label">ID del Proyecto (sin espacios)</label>
-                    <input type="text" id="np-id" class="form-input" placeholder="Ej: modsljak_android">
-                    <small style="color:#666; font-size:0.8rem;">⚠️ Debe coincidir con el MODSLJAK_PROYECTO_ID del sitio</small>
+                    <label class="form-label">ID Proyek (tanpa spasi)</label>
+                    <input type="text" id="np-id" class="form-input" placeholder="Contoh: modsljak_android">
+                    <small style="color:#666; font-size:0.8rem;">⚠️ Harus sesuai dengan MODSLJAK_PROYECTO_ID di situs</small>
                 </div>
                 <div>
-                    <label class="form-label">Nombre visible</label>
-                    <input type="text" id="np-nombre" class="form-input" placeholder="Ej: MODSLJAK Android">
+                    <label class="form-label">Nama Tampilan</label>
+                    <input type="text" id="np-nombre" class="form-input" placeholder="Contoh: MODSLJAK Android">
                 </div>
                 <div>
-                    <label class="form-label">Cliente / Dueño</label>
-                    <input type="text" id="np-cliente" class="form-input" placeholder="Ej: Victor">
+                    <label class="form-label">Klien / Pemilik</label>
+                    <input type="text" id="np-cliente" class="form-input" placeholder="Contoh: Victor">
                 </div>
                 <div>
-                    <label class="form-label">URL del sitio</label>
-                    <input type="text" id="np-url" class="form-input" placeholder="https://misitio.com/android.html">
+                    <label class="form-label">URL Situs</label>
+                    <input type="text" id="np-url" class="form-input" placeholder="https://situssaya.com/android.html">
                 </div>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
                     <div>
-                        <label class="form-label">Precio mensual</label>
-                        <input type="text" id="np-precio" class="form-input" placeholder="Ej: $20/mes">
+                        <label class="form-label">Harga Bulanan</label>
+                        <input type="text" id="np-precio" class="form-input" placeholder="Contoh: $20/bulan">
                     </div>
                     <div>
-                        <label class="form-label">Fecha expiración</label>
+                        <label class="form-label">Tanggal Kedaluwarsa</label>
                         <input type="date" id="np-expira" class="form-input">
                     </div>
                 </div>
                 <div style="display:flex; gap:20px;">
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer; color:#ccc;">
-                        <input type="checkbox" id="np-activo" checked style="width:16px; height:16px;"> Activo
+                        <input type="checkbox" id="np-activo" checked style="width:16px; height:16px;"> Aktif
                     </label>
                     <label style="display:flex; align-items:center; gap:8px; cursor:pointer; color:#ccc;">
-                        <input type="checkbox" id="np-pagado" checked style="width:16px; height:16px;"> Pagado
+                        <input type="checkbox" id="np-pagado" checked style="width:16px; height:16px;"> Sudah Bayar
                     </label>
                 </div>
             </div>
             <div id="np-msg" style="display:none; padding:12px; border-radius:8px; margin-top:15px; font-weight:600;"></div>
             <div class="modal-buttons" style="margin-top:20px;">
-                <button class="btn btn-activar" onclick="guardarNuevoProyecto()">💾 Crear Proyecto</button>
-                <button class="btn btn-desactivar" onclick="cerrarModalNuevoProyecto()">✗ Cancelar</button>
+                <button class="btn btn-activar" onclick="guardarNuevoProyecto()">💾 Buat Proyek</button>
+                <button class="btn btn-desactivar" onclick="cerrarModalNuevoProyecto()">✗ Batal</button>
             </div>
         </div>
     </div>
 
     <script>
         // ============================================
-        // CONFIGURACIÓN FIREBASE REAL - CONFIGURADO ✓
+        // KONFIGURASI FIREBASE REAL - TERKONFIGURASI ✓
         // ============================================
         
-        // Importar Firebase SDK
+        // Impor Firebase SDK
         const firebaseScript = document.createElement('script');
         firebaseScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js';
         document.head.appendChild(firebaseScript);
@@ -1177,7 +1183,7 @@
         firebaseDbScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js';
         document.head.appendChild(firebaseDbScript);
 
-        // Configuración completa de Firebase
+        // Konfigurasi lengkap Firebase
         const FIREBASE_CONFIG = {
             apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU",
             authDomain: "alexis-fba4d.firebaseapp.com",
@@ -1190,7 +1196,7 @@
 
         const DB_URL = FIREBASE_CONFIG.databaseURL + '/proyectos';
         
-        // Inicializar Firebase cuando los scripts estén cargados
+        // Inisialisasi Firebase saat skrip dimuat
         let firebaseInitialized = false;
         let database = null;
         
@@ -1199,12 +1205,12 @@
                 firebase.initializeApp(FIREBASE_CONFIG);
                 database = firebase.database();
                 firebaseInitialized = true;
-                console.log('✅ Firebase inicializado correctamente');
+                console.log('✅ Firebase berhasil diinisialisasi');
             }
         };
 
         // ============================================
-        // CREDENCIALES - HASH SHA-256 (NO EDITAR)
+        // KREDENSIAL - HASH SHA-256
         // ============================================
 
         const _h = {
@@ -1237,7 +1243,6 @@
             const hUser = await _sha256(username);
             const hPass = await _sha256(password);
 
-            // Verificar usuario principal (hardcoded) + usuarios extras guardados
             const usuariosExtras = JSON.parse(localStorage.getItem('_usuarios_extras') || '{}');
             const esValido = (_h[hUser] && _h[hUser] === hPass) || 
                              (usuariosExtras[hUser] && usuariosExtras[hUser] === hPass);
@@ -1248,7 +1253,7 @@
                 document.getElementById('usuario-nombre').textContent = username;
                 localStorage.setItem('usuario', username);
                 document.getElementById('error-msg').style.display = 'none';
-                agregarLog(`✅ Inicio de sesión: ${username}`);
+                agregarLog(`✅ Sesi masuk: ${username}`);
                 cargarProyectos();
             } else {
                 document.getElementById('error-msg').style.display = 'block';
@@ -1256,19 +1261,18 @@
         }
 
         function logout() {
-            if (confirm('¿Estás seguro de cerrar sesión?')) {
+            if (confirm('Apakah Anda yakin ingin keluar?')) {
                 localStorage.removeItem('usuario');
                 document.getElementById('login-container').style.display = 'flex';
                 document.getElementById('main-container').classList.remove('active');
                 document.getElementById('username').value = '';
                 document.getElementById('password').value = '';
                 document.getElementById('error-msg').style.display = 'none';
-                agregarLog('👋 Sesión cerrada');
+                agregarLog('👋 Sesi ditutup');
             }
         }
 
         window.onload = async function() {
-            // Siempre mostrar login primero
             document.getElementById('login-container').style.display = 'flex';
             document.getElementById('main-container').classList.remove('active');
 
@@ -1290,7 +1294,7 @@
         };
 
         // ============================================
-        // TABS
+        // TAB
         // ============================================
 
         function cambiarTab(tabName) {
@@ -1316,7 +1320,7 @@
         }
 
         // ============================================
-        // CARGAR PROYECTOS DESDE FIREBASE
+        // MUAT PROYEK DARI FIREBASE
         // ============================================
 
         function setStatus(tipo, mensaje) {
@@ -1327,7 +1331,7 @@
         }
 
         function cargarProyectos() {
-            setStatus('guardando', '⏳ Cargando desde Firebase...');
+            setStatus('guardando', '⏳ Memuat dari Firebase...');
 
             fetch(DB_URL + '.json')
                 .then(r => {
@@ -1337,15 +1341,14 @@
                 .then(data => {
                     proyectosData = data || {};
                     
-                    // Verificar si la base de datos está vacía
                     if (Object.keys(proyectosData).length === 0) {
-                        setStatus('error', '⚠️ Base de datos vacía - Inicializar proyectos');
+                        setStatus('error', '⚠️ Basis data kosong - Inisialisasi proyek');
                         document.getElementById('btn-inicializar').style.display = 'block';
                         document.getElementById('proyectos-container').innerHTML = `
                             <div style="text-align: center; padding: 60px; background: rgba(255,107,0,0.1); border: 2px solid var(--warning); border-radius: 15px; margin: 20px 0;">
-                                <h2 style="color: var(--warning); margin-bottom: 20px;">⚠️ Base de Datos Vacía</h2>
-                                <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 15px;">No hay proyectos registrados en Firebase.</p>
-                                <p style="color: #888;">Haz clic en el botón <strong style="color: var(--warning);">"🚀 Inicializar Proyectos"</strong> arriba para crear automáticamente:</p>
+                                <h2 style="color: var(--warning); margin-bottom: 20px;">⚠️ Basis Data Kosong</h2>
+                                <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 15px;">Tidak ada proyek terdaftar di Firebase.</p>
+                                <p style="color: #888;">Klik tombol <strong style="color: var(--warning);">"🚀 Inisialisasi Proyek"</strong> di atas untuk membuat otomatis:</p>
                                 <ul style="text-align: left; display: inline-block; margin: 20px auto; color: #ccc;">
                                     <li style="margin: 10px 0;">✓ MODSLJAK Victor (modsljak_victor)</li>
                                     <li style="margin: 10px 0;">✓ EMERSON HACKS (modsljak_emerson)</li>
@@ -1353,7 +1356,7 @@
                             </div>
                         `;
                     } else {
-                        setStatus('conectado', '🟢 Conectado a Firebase');
+                        setStatus('conectado', '🟢 Terhubung ke Firebase');
                         document.getElementById('btn-inicializar').style.display = 'none';
                         renderProyectos(proyectosData);
                         actualizarEstadisticas(proyectosData);
@@ -1361,18 +1364,18 @@
                     }
                 })
                 .catch(error => {
-                    setStatus('error', '❌ Error: ' + error.message);
+                    setStatus('error', '❌ Kesalahan: ' + error.message);
                     console.error('Error Firebase:', error);
-                    alert('⚠️ Error al conectar con Firebase.\nRevisa la consola para más detalles.');
+                    alert('⚠️ Gagal terhubung ke Firebase.\nCek konsol untuk detail selengkapnya.');
                 });
         }
 
         // ============================================
-        // GUARDAR CAMBIOS EN FIREBASE
+        // SIMPAN PERUBAHAN KE FIREBASE
         // ============================================
 
         function guardarCambios() {
-            setStatus('guardando', '💾 Guardando en Firebase...');
+            setStatus('guardando', '💾 Menyimpan ke Firebase...');
 
             fetch(DB_URL + '.json', {
                 method: 'PUT',
@@ -1384,46 +1387,46 @@
                 return r.json();
             })
             .then(() => {
-                setStatus('conectado', '✅ Guardado en Firebase');
+                setStatus('conectado', '✅ Tersimpan di Firebase');
                 renderProyectos(proyectosData);
                 actualizarEstadisticas(proyectosData);
                 generarAlertas();
-                setTimeout(() => setStatus('conectado', '🟢 Conectado a Firebase'), 3000);
+                setTimeout(() => setStatus('conectado', '🟢 Terhubung ke Firebase'), 3000);
             })
             .catch(error => {
-                setStatus('error', '❌ Error al guardar: ' + error.message);
+                setStatus('error', '❌ Gagal menyimpan: ' + error.message);
                 console.error('Error:', error);
-                alert('⚠️ Error al guardar en Firebase.\nRevisa la consola para más detalles.');
+                alert('⚠️ Gagal menyimpan ke Firebase.\nCek konsol untuk detail selengkapnya.');
             });
         }
 
         // ============================================
-        // INICIALIZAR PROYECTOS AUTOMÁTICAMENTE
+        // INISIALISASI PROYEK OTOMATIS
         // ============================================
         
         function inicializarProyectos() {
             const confirmar = confirm(
-                '🚀 INICIALIZAR PROYECTOS EN FIREBASE\n\n' +
-                'Se crearán automáticamente:\n\n' +
+                '🚀 INISIALISASI PROYEK DI FIREBASE\n\n' +
+                'Akan dibuat secara otomatis:\n\n' +
                 '✓ MODSLJAK Victor (modsljak_victor)\n' +
                 '✓ EMERSON HACKS (modsljak_emerson)\n\n' +
-                'Ambos proyectos estarán:\n' +
-                '- Activos ✅\n' +
-                '- Pagados ✅\n' +
-                '- Expiran: 2026-03-15 (30 días)\n\n' +
-                '¿Continuar?'
+                'Kedua proyek akan berkondisi:\n' +
+                '- Aktif ✅\n' +
+                '- Sudah Bayar ✅\n' +
+                '- Kedaluwarsa: 2026-03-15 (30 hari)\n\n' +
+                'Lanjutkan?'
             );
             
             if (!confirmar) return;
             
-            setStatus('guardando', '🚀 Inicializando proyectos...');
+            setStatus('guardando', '🚀 Menginisialisasi proyek...');
             
             const PROYECTOS_INICIALES = {
                 "modsljak_victor": {
                     "nombre": "MODSLJAK Victor",
                     "cliente": "Victor",
                     "url_demo": "https://torhshwvve.github.io/VicleyStore/",
-                    "precio": "$20/mes",
+                    "precio": "$20/bulan",
                     "expira": "2026-03-15",
                     "activo": true,
                     "pagado": true,
@@ -1436,7 +1439,7 @@
                     "nombre": "EMERSON HACKS",
                     "cliente": "Emerson",
                     "url_demo": "https://torhshwvve.github.io/emersonhacks/",
-                    "precio": "$20/mes",
+                    "precio": "$20/bulan",
                     "expira": "2026-03-15",
                     "activo": true,
                     "pagado": true,
@@ -1457,16 +1460,16 @@
                 return r.json();
             })
             .then(() => {
-                setStatus('conectado', '✅ ¡Proyectos inicializados correctamente!');
-                agregarLog('🚀 Proyectos iniciales creados: MODSLJAK Victor y EMERSON HACKS');
+                setStatus('conectado', '✅ Proyek berhasil diinisialisasi!');
+                agregarLog('🚀 Proyek awal dibuat: MODSLJAK Victor dan EMERSON HACKS');
                 
                 alert(
-                    '✅ ¡PROYECTOS CREADOS EXITOSAMENTE!\n\n' +
-                    'Se han inicializado:\n\n' +
+                    '✅ PROYEK BERHASIL DIBUAT!\n\n' +
+                    'Telah diinisialisasi:\n\n' +
                     '✓ MODSLJAK Victor\n' +
                     '✓ EMERSON HACKS\n\n' +
-                    'Ahora tus páginas web se conectarán correctamente.\n\n' +
-                    'Recarga tus sitios web para verificar la conexión.'
+                    'Situs web Anda sekarang terhubung dengan benar.\n\n' +
+                    'Muat ulang situs web Anda untuk memverifikasi koneksi.'
                 );
                 
                 setTimeout(() => {
@@ -1474,14 +1477,14 @@
                 }, 2000);
             })
             .catch(error => {
-                setStatus('error', '❌ Error al inicializar: ' + error.message);
+                setStatus('error', '❌ Gagal menginisialisasi: ' + error.message);
                 console.error('Error:', error);
-                alert('⚠️ Error al inicializar proyectos.\nRevisa la consola para más detalles.');
+                alert('⚠️ Gagal menginisialisasi proyek.\nCek konsol untuk detail selengkapnya.');
             });
         }
 
         // ============================================
-        // RENDER PROYECTOS
+        // TAMPILKAN PROYEK
         // ============================================
 
         function renderProyectos(proyectos) {
@@ -1489,9 +1492,6 @@
             lista.innerHTML = '';
 
             for (let [id, proyecto] of Object.entries(proyectos)) {
-                // 🔥 FILTRAR PROYECTOS INVÁLIDOS O FANTASMA
-                // Ignorar proyectos con cliente "undefined", nombres inválidos, o IDs incorrectos
-                // Aceptar solo: modsljak_* (Victor) o emerson_* (Emerson)
                 const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
                 
                 if (!proyecto || 
@@ -1499,8 +1499,8 @@
                     proyecto.nombre === 'undefined' ||
                     proyecto.cliente === 'undefined' ||
                     !esIDValido) {
-                    console.warn('⚠️ Proyecto inválido ignorado:', id, proyecto);
-                    continue; // Saltar este proyecto
+                    console.warn('⚠️ Proyek tidak valid diabaikan:', id, proyecto);
+                    continue;
                 }
                 const expira = new Date(proyecto.expira);
                 const hoy = new Date();
@@ -1517,51 +1517,51 @@
                     <div class="proyecto-header">
                         <div>
                             <div class="proyecto-titulo">${proyecto.nombre}</div>
-                            <div style="color: #888; margin-top: 5px;">Cliente: ${proyecto.cliente} • ID: ${id}</div>
+                            <div style="color: #888; margin-top: 5px;">Klien: ${proyecto.cliente} • ID: ${id}</div>
                         </div>
                         <div class="badges">
                             <span class="badge ${proyecto.activo ? 'activo' : 'inactivo'}">
-                                ${proyecto.activo ? '✅ Activo' : '❌ Inactivo'}
+                                ${proyecto.activo ? '✅ Aktif' : '❌ Nonaktif'}
                             </span>
-                            ${proyecto.mantenimiento ? '<span class="badge mantenimiento">🔧 Mantenimiento</span>' : ''}
-                            ${proyecto.pagado ? '<span class="badge pagado">💳 Pagado</span>' : ''}
+                            ${proyecto.mantenimiento ? '<span class="badge mantenimiento">🔧 Pemeliharaan</span>' : ''}
+                            ${proyecto.pagado ? '<span class="badge pagado">💳 Lunas</span>' : ''}
                         </div>
                     </div>
 
                     <div class="proyecto-info">
                         <div class="info-item">
-                            <div class="info-label">💰 Precio</div>
+                            <div class="info-label">💰 Harga</div>
                             <div class="info-value">${proyecto.precio}</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">💳 Estado Pago</div>
+                            <div class="info-label">💳 Status Pembayaran</div>
                             <div class="info-value" style="color: ${proyecto.pagado ? 'var(--success)' : 'var(--danger)'};">
-                                ${proyecto.pagado ? 'Pagado ✓' : 'Pendiente ✗'}
+                                ${proyecto.pagado ? 'Lunas ✓' : 'Pending ✗'}
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">📅 Expira</div>
+                            <div class="info-label">📅 Kedaluwarsa</div>
                             <div class="info-value">
                                 ${proyecto.expira}
                                 <div style="font-size: 0.85rem; color: ${diasRestantes <= 7 ? 'var(--warning)' : diasRestantes <= 0 ? 'var(--danger)' : '#888'};">
-                                    ${diasRestantes > 0 ? `(${diasRestantes} días)` : '(⚠️ Expirado)'}
+                                    ${diasRestantes > 0 ? `(${diasRestantes} hari lagi)` : '(⚠️ Kedaluwarsa)'}
                                 </div>
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">🛒 Clicks Hoy / Total</div>
+                            <div class="info-label">🛒 Klik Hari Ini / Total</div>
                             <div class="info-value" style="color: var(--success);">
                                 ${(() => {
                                     const hoy = new Date().toISOString().split('T')[0];
                                     const dias = proyecto.clics_por_dia || {};
                                     const hoyN = dias[hoy] || 0;
                                     const total = Object.values(dias).reduce((a,b) => a+b, 0);
-                                    return `${hoyN} hoy / ${total} total`;
+                                    return `${hoyN} hari ini / ${total} total`;
                                 })()}
                             </div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">🔄 Actualizado</div>
+                            <div class="info-label">🔄 Diperbarui</div>
                             <div class="info-value">${proyecto.ultima_actualizacion}</div>
                         </div>
                     </div>
@@ -1569,20 +1569,20 @@
                     <div class="controles">
                         <button class="btn ${proyecto.activo ? 'btn-desactivar' : 'btn-activar'}" 
                                 onclick="toggleActivacion('${id}', ${!proyecto.activo})">
-                            ${proyecto.activo ? '🔴 Desactivar' : '🟢 Activar'}
+                            ${proyecto.activo ? '🔴 Nonaktifkan' : '🟢 Aktifkan'}
                         </button>
                         <button class="btn btn-warning" 
                                 onclick="toggleMantenimiento('${id}', ${!proyecto.mantenimiento})">
-                            ${proyecto.mantenimiento ? '🔧 Quitar Mantenimiento' : '🔧 Mantenimiento'}
+                            ${proyecto.mantenimiento ? '🔧 Hapus Pemeliharaan' : '🔧 Pemeliharaan'}
                         </button>
                         <button class="btn btn-tiempo" onclick="abrirModalTiempo('${id}')">
-                            ⏰ Gestionar Tiempo
+                            ⏰ Kelola Waktu
                         </button>
                         <button class="btn btn-editar" onclick="togglePago('${id}', ${!proyecto.pagado})">
-                            ${proyecto.pagado ? '💳 No Pagado' : '💰 Pagado'}
+                            ${proyecto.pagado ? '💳 Belum Bayar' : '💰 Lunas'}
                         </button>
                         <a href="${proyecto.url_demo}" class="btn btn-editar" target="_blank" style="text-decoration: none;">
-                            🌐 Ver Sitio
+                            🌐 Lihat Situs
                         </a>
                     </div>
                 `;
@@ -1591,7 +1591,6 @@
         }
 
         function actualizarEstadisticas(proyectos) {
-            // 🔥 FILTRAR PROYECTOS INVÁLIDOS
             const proyectosValidos = Object.entries(proyectos).filter(([id, p]) => {
                 const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
                 return p && p.nombre && p.nombre !== 'undefined' && 
@@ -1617,13 +1616,13 @@
         }
 
         // ============================================
-        // FUNCIONES DE CONTROL
+        // FUNGSI KONTROL
         // ============================================
 
         function toggleActivacion(id, nuevoEstado) {
             const proyecto = proyectosData[id];
-            const accion = nuevoEstado ? 'activar' : 'desactivar';
-            if (confirm(`¿${accion.toUpperCase()} "${proyecto.nombre}"?`)) {
+            const accion = nuevoEstado ? 'mengaktifkan' : 'menonaktifkan';
+            if (confirm(`Apakah Anda yakin ingin ${accion} "${proyecto.nombre}"?`)) {
                 proyectosData[id].activo = nuevoEstado;
                 proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
                 agregarLog(`${nuevoEstado ? '✅' : '❌'} ${accion.toUpperCase()}: ${proyecto.nombre}`);
@@ -1633,10 +1632,10 @@
 
         function toggleMantenimiento(id, nuevoEstado) {
             const proyecto = proyectosData[id];
-            if (confirm(`¿${nuevoEstado ? 'Activar' : 'Desactivar'} mantenimiento en "${proyecto.nombre}"?`)) {
+            if (confirm(`Apakah Anda yakin ingin ${nuevoEstado ? 'mengaktifkan' : 'menonaktifkan'} pemeliharaan pada "${proyecto.nombre}"?`)) {
                 proyectosData[id].mantenimiento = nuevoEstado;
                 proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-                agregarLog(`🔧 Mantenimiento ${nuevoEstado ? 'activado' : 'desactivado'}: ${proyecto.nombre}`);
+                agregarLog(`🔧 Pemeliharaan ${nuevoEstado ? 'diaktifkan' : 'dinonaktifkan'}: ${proyecto.nombre}`);
                 guardarCambios();
             }
         }
@@ -1644,7 +1643,7 @@
         function togglePago(id, nuevoPago) {
             proyectosData[id].pagado = nuevoPago;
             proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-            agregarLog(`💰 ${nuevoPago ? 'Pagado' : 'No pagado'}: ${proyectosData[id].nombre}`);
+            agregarLog(`💰 ${nuevoPago ? 'Lunas' : 'Belum bayar'}: ${proyectosData[id].nombre}`);
             guardarCambios();
         }
 
@@ -1667,11 +1666,11 @@
             proyectosData[proyectoActual].expira = fechaActual.toISOString().split('T')[0];
             proyectosData[proyectoActual].ultima_actualizacion = new Date().toISOString().split('T')[0];
             
-            agregarLog(`⏰ ${dias > 0 ? 'Agregados' : 'Removidos'} ${Math.abs(dias)} días: ${proyecto.nombre}`);
+            agregarLog(`⏰ ${dias > 0 ? 'Menambahkan' : 'Mengurangi'} ${Math.abs(dias)} hari: ${proyecto.nombre}`);
             
             cerrarModal();
             guardarCambios();
-            alert(`✅ ${dias > 0 ? '+' : ''}${dias} días → Nueva fecha: ${fechaActual.toLocaleDateString('es-ES')}`);
+            alert(`✅ ${dias > 0 ? '+' : ''}${dias} hari → Tanggal baru: ${fechaActual.toLocaleDateString('id-ID')}`);
         }
 
         function agregarTiempoCustom() {
@@ -1679,16 +1678,16 @@
             if (dias && !isNaN(dias)) {
                 agregarTiempo(dias);
             } else {
-                alert('⚠️ Ingresa un número válido');
+                alert('⚠️ Masukkan angka yang valid');
             }
         }
 
         // ============================================
-        // ACCIONES RÁPIDAS
+        // AKSI CEPAT
         // ============================================
 
         function bloquearNoPagados() {
-            if (!confirm('¿Desactivar TODOS los sitios no pagados?')) return;
+            if (!confirm('Apakah Anda ingin menonaktifkan SEMUA situs yang belum bayar?')) return;
             
             let count = 0;
             for (let [id, proyecto] of Object.entries(proyectosData)) {
@@ -1699,13 +1698,13 @@
                 }
             }
             
-            agregarLog(`🔒 Bloqueados ${count} sitios no pagados`);
+            agregarLog(`🔒 Memblokir ${count} situs belum bayar`);
             guardarCambios();
-            alert(`✅ ${count} sitios bloqueados`);
+            alert(`✅ ${count} situs diblokir`);
         }
 
         function activarPagados() {
-            if (!confirm('¿Activar TODOS los sitios pagados?')) return;
+            if (!confirm('Apakah Anda ingin mengaktifkan SEMUA situs yang sudah bayar?')) return;
             
             let count = 0;
             for (let [id, proyecto] of Object.entries(proyectosData)) {
@@ -1716,9 +1715,9 @@
                 }
             }
             
-            agregarLog(`✅ Activados ${count} sitios pagados`);
+            agregarLog(`✅ Mengaktifkan ${count} situs sudah bayar`);
             guardarCambios();
-            alert(`✅ ${count} sitios activados`);
+            alert(`✅ ${count} situs diaktifkan`);
         }
 
         function alertarProximosVencer() {
@@ -1729,14 +1728,14 @@
                 const expira = new Date(proyecto.expira);
                 const dias = Math.ceil((expira - hoy) / (1000 * 60 * 60 * 24));
                 if (dias <= 15 && dias >= 0) {
-                    proximos.push(`${proyecto.nombre}: ${dias} días`);
+                    proximos.push(`${proyecto.nombre}: ${dias} hari lagi`);
                 }
             }
             
             if (proximos.length === 0) {
-                alert('✅ No hay proyectos próximos a vencer');
+                alert('✅ Tidak ada proyek yang akan segera kedaluwarsa');
             } else {
-                alert(`⚠️ Próximos a vencer:\n\n${proximos.join('\n')}`);
+                alert(`⚠️ Akan segera kedaluwarsa:\n\n${proximos.join('\n')}`);
             }
         }
 
@@ -1751,24 +1750,24 @@
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `reporte-${new Date().toISOString().split('T')[0]}.json`;
+            a.download = `laporan-${new Date().toISOString().split('T')[0]}.json`;
             a.click();
             
-            agregarLog('📥 Reporte exportado');
-            alert('✅ Reporte exportado');
+            agregarLog('📥 Laporan diekspor');
+            alert('✅ Laporan diekspor');
         }
 
         function limpiarHistorial() {
-            if (confirm('¿Limpiar historial de actividad?')) {
+            if (confirm('Bersihkan riwayat aktivitas?')) {
                 activityLog = [];
                 localStorage.setItem('activityLog', JSON.stringify(activityLog));
                 renderHistorial();
-                alert('✅ Historial limpiado');
+                alert('✅ Riwayat dibersihkan');
             }
         }
 
         // ============================================
-        // HISTORIAL
+        // RIWAYAT
         // ============================================
 
         function agregarLog(accion) {
@@ -1791,7 +1790,7 @@
             container.innerHTML = '';
             
             if (activityLog.length === 0) {
-                container.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">No hay actividad</p>';
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">Tidak ada aktivitas</p>';
                 return;
             }
             
@@ -1799,16 +1798,16 @@
                 const div = document.createElement('div');
                 div.className = 'log-item';
                 div.innerHTML = `
-                    <div class="log-time">${new Date(log.fecha).toLocaleString('es-ES')}</div>
+                    <div class="log-time">${new Date(log.fecha).toLocaleString('id-ID')}</div>
                     <div class="log-action">${log.accion}</div>
-                    <div style="color: #666; font-size: 0.85rem; margin-top: 5px;">Por: ${log.usuario}</div>
+                    <div style="color: #666; font-size: 0.85rem; margin-top: 5px;">Oleh: ${log.usuario}</div>
                 `;
                 container.appendChild(div);
             });
         }
 
         // ============================================
-        // ALERTAS
+        // PERINGATAN
         // ============================================
 
         function generarAlertas() {
@@ -1818,7 +1817,6 @@
             const hoy = new Date();
             const alertas = [];
             
-            // 🔥 FILTRAR PROYECTOS INVÁLIDOS
             const proyectosValidos = Object.entries(proyectosData).filter(([id, p]) => {
                 const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
                 return p && p.nombre && p.nombre !== 'undefined' && 
@@ -1833,14 +1831,14 @@
                     alertas.push({
                         tipo: 'danger',
                         icono: '🚨',
-                        mensaje: `${proyecto.nombre} EXPIRADO hace ${Math.abs(dias)} días`
+                        mensaje: `${proyecto.nombre} KEDALUWARSA ${Math.abs(dias)} hari lalu`
                     });
                 }
                 else if (dias <= 7 && dias >= 0) {
                     alertas.push({
                         tipo: 'warning',
                         icono: '⚠️',
-                        mensaje: `${proyecto.nombre} vence en ${dias} días`
+                        mensaje: `${proyecto.nombre} kedaluwarsa dalam ${dias} hari`
                     });
                 }
                 
@@ -1848,13 +1846,13 @@
                     alertas.push({
                         tipo: 'warning',
                         icono: '💰',
-                        mensaje: `${proyecto.nombre} activo pero NO pagado`
+                        mensaje: `${proyecto.nombre} aktif tetapi BELUM dibayar`
                     });
                 }
             }
             
             if (alertas.length === 0) {
-                container.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">✅ No hay alertas</p>';
+                container.innerHTML = '<p style="color: #888; text-align: center; padding: 20px;">✅ Tidak ada peringatan</p>';
                 return;
             }
             
@@ -1869,7 +1867,7 @@
         }
 
         // ============================================
-        // FILTROS
+        // FILTER
         // ============================================
 
         function filtrarProyectos() {
@@ -1895,15 +1893,15 @@
                 div.style.display = (coincideBusqueda && coincideFiltro) ? 'block' : 'none';
             });
         }
+
         // ============================================
-        // ANALYTICS - CLICKS DE COMPRA
+        // ANALITIK - KLIK PEMBELIAN
         // ============================================
 
         function renderAnalytics() {
             const container = document.getElementById('analytics-container');
             container.innerHTML = '';
 
-            // 🔥 FILTRAR PROYECTOS INVÁLIDOS
             const entries = Object.entries(proyectosData).filter(([id, p]) => {
                 const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
                 return p && p.nombre && p.nombre !== 'undefined' && 
@@ -1911,14 +1909,13 @@
             });
             
             if (entries.length === 0) {
-                container.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Sin proyectos</p>';
+                container.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Belum ada proyek</p>';
                 return;
             }
 
             const limiteDias = parseInt(document.getElementById('filtro-dias')?.value || 30);
             const hoy = new Date();
 
-            // Ordenar proyectos por total de clicks (mayor a menor)
             entries.sort((a, b) => {
                 const ta = Object.values(a[1].clics_por_dia || {}).reduce((s,v)=>s+v,0);
                 const tb = Object.values(b[1].clics_por_dia || {}).reduce((s,v)=>s+v,0);
@@ -1929,7 +1926,6 @@
                 const diasData = proyecto.clics_por_dia || {};
                 const hoyStr = hoy.toISOString().split('T')[0];
 
-                // Filtrar días según el período seleccionado
                 let diasFiltrados = Object.entries(diasData);
                 if (limiteDias > 0) {
                     const limite = new Date(hoy);
@@ -1937,7 +1933,6 @@
                     diasFiltrados = diasFiltrados.filter(([fecha]) => new Date(fecha) >= limite);
                 }
 
-                // Ordenar por fecha más reciente primero
                 diasFiltrados.sort((a, b) => b[0].localeCompare(a[0]));
 
                 const total = Object.values(diasData).reduce((s,v) => s+v, 0);
@@ -1950,14 +1945,14 @@
 
                 let filasHTML = '';
                 if (diasFiltrados.length === 0) {
-                    filasHTML = `<tr><td colspan="3" class="sin-datos-dia">Sin clicks en este período</td></tr>`;
+                    filasHTML = `<tr><td colspan="3" class="sin-datos-dia">Tidak ada klik dalam periode ini</td></tr>`;
                 } else {
                     diasFiltrados.forEach(([fecha, num]) => {
                         const pct = Math.round((num / maxDia) * 100);
                         const esHoy = fecha === hoyStr;
                         filasHTML += `
                             <tr>
-                                <td class="dia-fecha">${esHoy ? '⭐ Hoy' : formatearFecha(fecha)}</td>
+                                <td class="dia-fecha">${esHoy ? '⭐ Hari ini' : formatearFecha(fecha)}</td>
                                 <td class="dia-barra-wrap">
                                     <div class="dia-barra-bg">
                                         <div class="dia-barra" style="width:${pct}%"></div>
@@ -1973,7 +1968,7 @@
                     <div class="analytics-header" onclick="toggleAnalytics('${id}')">
                         <div class="analytics-proyecto-nombre">🌐 ${proyecto.nombre}</div>
                         <div class="analytics-badges">
-                            <span class="badge-hoy">Hoy: ${hoyClicks}</span>
+                            <span class="badge-hoy">Hari ini: ${hoyClicks}</span>
                             <span class="badge-total">Total: ${total}</span>
                             <button class="click-reset-btn" onclick="event.stopPropagation(); resetClicks('${id}')">🗑 Reset</button>
                             <span class="toggle-arrow">▼</span>
@@ -1983,8 +1978,8 @@
                         <table class="dias-tabla">
                             <thead>
                                 <tr>
-                                    <th>Fecha</th>
-                                    <th>Clicks</th>
+                                    <th>Tanggal</th>
+                                    <th>Klik</th>
                                     <th style="text-align:right;">Total</th>
                                 </tr>
                             </thead>
@@ -2005,25 +2000,25 @@
 
         function formatearFecha(fechaStr) {
             const [y, m, d] = fechaStr.split('-');
-            const meses = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+            const meses = ['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'];
             return `${d} ${meses[parseInt(m)-1]} ${y}`;
         }
 
         function resetClicks(id) {
             const nombre = proyectosData[id].nombre;
-            if (!confirm(`¿Resetear TODOS los clicks de "${nombre}"?`)) return;
+            if (!confirm(`Atur ulang SEMUA klik untuk "${nombre}"?`)) return;
             proyectosData[id].clics_por_dia = {};
             proyectosData[id].clics_compra = 0;
             proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-            agregarLog(`🗑 Clicks reseteados: ${nombre}`);
+            agregarLog(`🗑 Klik diatur ulang: ${nombre}`);
             guardarCambios();
             renderAnalytics();
             actualizarEstadisticas(proyectosData);
-            alert(`✅ Clicks de "${nombre}" reseteados`);
+            alert(`✅ Klik untuk "${nombre}" berhasil diatur ulang`);
         }
 
         // ============================================
-        // GESTIÓN DE USUARIOS
+        // MANAJEMEN PENGGUNA
         // ============================================
 
         async function agregarUsuario() {
@@ -2041,21 +2036,19 @@
                 setTimeout(() => msg.style.display = 'none', 3000);
             };
 
-            if (!usu || !pass) return mostrarMsg('⚠️ Completa todos los campos', 'err');
-            if (pass !== pass2) return mostrarMsg('❌ Las contraseñas no coinciden', 'err');
-            if (pass.length < 6) return mostrarMsg('❌ La contraseña debe tener al menos 6 caracteres', 'err');
+            if (!usu || !pass) return mostrarMsg('⚠️ Lengkapi semua kolom', 'err');
+            if (pass !== pass2) return mostrarMsg('❌ Kata sandi tidak cocok', 'err');
+            if (pass.length < 6) return mostrarMsg('❌ Kata sandi minimal 6 karakter', 'err');
 
             const hUser = await _sha256(usu);
             const hPass = await _sha256(pass);
 
-            // No permitir sobreescribir el admin principal
-            if (_h[hUser]) return mostrarMsg('⚠️ Ese usuario ya existe como admin principal', 'err');
+            if (_h[hUser]) return mostrarMsg('⚠️ Pengguna tersebut sudah ada sebagai admin utama', 'err');
 
             const extras = JSON.parse(localStorage.getItem('_usuarios_extras') || '{}');
             extras[hUser] = hPass;
             localStorage.setItem('_usuarios_extras', JSON.stringify(extras));
 
-            // Guardar nombre visible (no la contraseña)
             const nombres = JSON.parse(localStorage.getItem('_usuarios_nombres') || '{}');
             nombres[hUser] = usu;
             localStorage.setItem('_usuarios_nombres', JSON.stringify(nombres));
@@ -2064,8 +2057,8 @@
             document.getElementById('nueva-contrasena').value = '';
             document.getElementById('repetir-contrasena').value = '';
 
-            mostrarMsg(`✅ Usuario "${usu}" guardado correctamente`, 'ok');
-            agregarLog(`👤 Nuevo usuario agregado: ${usu}`);
+            mostrarMsg(`✅ Pengguna "${usu}" berhasil disimpan`, 'ok');
+            agregarLog(`👤 Pengguna baru ditambahkan: ${usu}`);
             renderUsuarios();
         }
 
@@ -2076,7 +2069,6 @@
             const extras = JSON.parse(localStorage.getItem('_usuarios_extras') || '{}');
             const nombres = JSON.parse(localStorage.getItem('_usuarios_nombres') || '{}');
 
-            // Usuario principal (hardcoded)
             const rowAdmin = document.createElement('div');
             rowAdmin.className = 'click-row';
             rowAdmin.style.cssText = 'display:flex; align-items:center; gap:15px; padding:16px; background:rgba(189,0,255,0.05); border:1px solid var(--gray); border-radius:10px; margin-bottom:10px;';
@@ -2084,34 +2076,33 @@
                 <span style="font-size:1.3rem;">👑</span>
                 <div style="flex:1;">
                     <div style="font-weight:700; color:#fff;">TORRES</div>
-                    <div style="color:#888; font-size:0.8rem;">Admin principal · Contraseña protegida</div>
+                    <div style="color:#888; font-size:0.8rem;">Admin Utama · Kata sandi dilindungi</div>
                 </div>
-                <span style="padding:5px 12px; background:rgba(189,0,255,0.2); border:1px solid var(--info); color:var(--info); border-radius:6px; font-size:0.8rem;">🔒 Fijo</span>
+                <span style="padding:5px 12px; background:rgba(189,0,255,0.2); border:1px solid var(--info); color:var(--info); border-radius:6px; font-size:0.8rem;">🔒 Permanen</span>
             `;
             lista.appendChild(rowAdmin);
 
-            // Usuarios extras
             const entradas = Object.entries(extras);
             if (entradas.length === 0) {
                 const p = document.createElement('p');
                 p.style.cssText = 'color:#555; font-size:0.9rem; margin-top:15px;';
-                p.textContent = 'No hay usuarios adicionales aún.';
+                p.textContent = 'Belum ada pengguna tambahan.';
                 lista.appendChild(p);
                 return;
             }
 
             entradas.forEach(([hUser]) => {
-                const nombre = nombres[hUser] || '(usuario)';
+                const nombre = nombres[hUser] || '(pengguna)';
                 const div = document.createElement('div');
                 div.style.cssText = 'display:flex; align-items:center; gap:15px; padding:16px; background:rgba(255,255,255,0.02); border:1px solid var(--gray); border-radius:10px; margin-bottom:10px;';
                 div.innerHTML = `
                     <span style="font-size:1.3rem;">👤</span>
                     <div style="flex:1;">
                         <div style="font-weight:700; color:#fff;">${nombre}</div>
-                        <div style="color:#888; font-size:0.8rem;">Contraseña: ••••••• (protegida)</div>
+                        <div style="color:#888; font-size:0.8rem;">Kata sandi: ••••••• (dilindungi)</div>
                     </div>
                     <button onclick="eliminarUsuario('${hUser}', '${nombre}')" style="padding:6px 14px; background:rgba(255,0,110,0.15); border:1px solid var(--danger); color:var(--danger); border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">
-                        🗑 Eliminar
+                        🗑 Hapus
                     </button>
                 `;
                 lista.appendChild(div);
@@ -2119,23 +2110,22 @@
         }
 
         function eliminarUsuario(hUser, nombre) {
-            if (!confirm(`¿Eliminar el usuario "${nombre}"?`)) return;
+            if (!confirm(`Hapus pengguna "${nombre}"?`)) return;
             const extras = JSON.parse(localStorage.getItem('_usuarios_extras') || '{}');
             const nombres = JSON.parse(localStorage.getItem('_usuarios_nombres') || '{}');
             delete extras[hUser];
             delete nombres[hUser];
             localStorage.setItem('_usuarios_extras', JSON.stringify(extras));
             localStorage.setItem('_usuarios_nombres', JSON.stringify(nombres));
-            agregarLog(`🗑 Usuario eliminado: ${nombre}`);
+            agregarLog(`🗑 Pengguna dihapus: ${nombre}`);
             renderUsuarios();
         }
 
         // ============================================
-        // GESTIÓN DE PROYECTOS - CREAR NUEVO
+        // MANAJEMEN PROYEK - BUAT BARU
         // ============================================
 
         function abrirModalNuevoProyecto() {
-            // Fecha por defecto: 30 días desde hoy
             const hoy = new Date();
             hoy.setDate(hoy.getDate() + 30);
             document.getElementById('np-expira').value = hoy.toISOString().split('T')[0];
@@ -2170,17 +2160,17 @@
             };
 
             if (!id || !nombre || !expira) {
-                return mostrarMsg('⚠️ ID, nombre y fecha de expiración son obligatorios', 'err');
+                return mostrarMsg('⚠️ ID, nama, dan tanggal kedaluwarsa wajib diisi', 'err');
             }
             if (proyectosData[id]) {
-                return mostrarMsg(`⚠️ Ya existe un proyecto con ID "${id}"`, 'err');
+                return mostrarMsg(`⚠️ Sudah ada proyek dengan ID "${id}"`, 'err');
             }
 
             proyectosData[id] = {
                 nombre: nombre,
-                cliente: cliente || 'Sin especificar',
+                cliente: cliente || 'Tidak ditentukan',
                 url_demo: url || '#',
-                precio: precio || 'Sin precio',
+                precio: precio || 'Tanpa harga',
                 expira: expira,
                 activo: activo,
                 pagado: pagado,
@@ -2190,8 +2180,8 @@
                 clics_por_dia: {}
             };
 
-            mostrarMsg('💾 Guardando en Firebase...', 'ok');
-            agregarLog(`➕ Nuevo proyecto creado: ${nombre} (${id})`);
+            mostrarMsg('💾 Menyimpan ke Firebase...', 'ok');
+            agregarLog(`➕ Proyek baru dibuat: ${nombre} (${id})`);
 
             guardarCambios();
             setTimeout(() => {
