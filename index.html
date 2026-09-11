@@ -1171,7 +1171,7 @@
 
     <script>
         // ============================================
-        // KONFIGURASI FIREBASE REAL - TERKONFIGURASI ✓
+        // KONFIGURASI FIREBASE BARU - TERHUBUNG ✓
         // ============================================
         
         // Impor Firebase SDK
@@ -1183,13 +1183,13 @@
         firebaseDbScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js';
         document.head.appendChild(firebaseDbScript);
 
-        // Konfigurasi lengkap Firebase
+        // Konfigurasi Firebase dari URL Baru
         const FIREBASE_CONFIG = {
-            apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU",
-            authDomain: "alexis-fba4d.firebaseapp.com",
-            databaseURL: 'https://alexis-fba4d-default-rtdb.firebaseio.com',
-            projectId: "alexis-fba4d",
-            storageBucket: "alexis-fba4d.firebasestorage.app",
+            apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU", // Masukkan API Key proyek adminpaneluser-2467b jika ada
+            authDomain: "adminpaneluser-2467b.firebaseapp.com",
+            databaseURL: 'https://adminpaneluser-2467b-default-rtdb.firebaseio.com',
+            projectId: "adminpaneluser-2467b",
+            storageBucket: "adminpaneluser-2467b.firebasestorage.app",
             messagingSenderId: "951108944538",
             appId: "1:951108944538:web:f09df349c41518de385523"
         };
@@ -1205,9 +1205,10 @@
                 firebase.initializeApp(FIREBASE_CONFIG);
                 database = firebase.database();
                 firebaseInitialized = true;
-                console.log('✅ Firebase berhasil diinisialisasi');
+                console.log('✅ Firebase (adminpaneluser-2467b) berhasil diinisialisasi');
             }
         };
+
 
         // ============================================
         // KREDENSIAL - HASH SHA-256
