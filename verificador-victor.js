@@ -7,8 +7,8 @@
     // 🔥 CONFIGURACIÓN FIREBASE (DEBE COINCIDIR CON EL ADMIN)
     // ============================================
     const CONFIG = {
-        proyectoId: 'modsljak_victor',
-        firebaseURL: 'https://alexis-fba4d-default-rtdb.firebaseio.com',
+        proyectoId: 'adminpaneluser-2467b',
+        firebaseURL: 'https://adminpaneluser-2467b-default-rtdb.firebaseio.com',
         // ✅ Firebase configurado correctamente
         verificarCadaMinutos: 5,
         cacheLocalMinutos: 30
