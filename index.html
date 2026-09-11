@@ -869,6 +869,9 @@
             }
         }
     </style>
+    <!-- SCRIPT FIREBASE -->
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js"></script>
 </head>
 <body>
 
@@ -976,11 +979,11 @@
 
         <!-- Navigasi Tab -->
         <div class="tabs">
-            <button class="tab active" onclick="cambiarTab('proyectos')">📁 Proyek</button>
-            <button class="tab" onclick="cambiarTab('historial')">📜 Riwayat</button>
-            <button class="tab" onclick="cambiarTab('alertas')">⚠️ Peringatan</button>
-            <button class="tab" onclick="cambiarTab('analytics')">📊 Klik Pembelian</button>
-            <button class="tab" onclick="cambiarTab('usuarios')">👤 Pengguna</button>
+            <button class="tab active" onclick="cambiarTab('proyectos', event)">📁 Proyek</button>
+            <button class="tab" onclick="cambiarTab('historial', event)">📜 Riwayat</button>
+            <button class="tab" onclick="cambiarTab('alertas', event)">⚠️ Peringatan</button>
+            <button class="tab" onclick="cambiarTab('analytics', event)">📊 Klik Pembelian</button>
+            <button class="tab" onclick="cambiarTab('usuarios', event)">👤 Pengguna</button>
         </div>
 
         <!-- TAB: Proyek -->
@@ -1162,15 +1165,7 @@
     </div>
 
     <script>
-        // KONFIGURASI FIREBASE BARU
-        const firebaseScript = document.createElement('script');
-        firebaseScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js';
-        document.head.appendChild(firebaseScript);
-        
-        const firebaseDbScript = document.createElement('script');
-        firebaseDbScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js';
-        document.head.appendChild(firebaseDbScript);
-
+        // KONFIGURASI FIREBASE
         const FIREBASE_CONFIG = {
             apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU",
             authDomain: "adminpaneluser-2467b.firebaseapp.com",
@@ -1183,23 +1178,15 @@
 
         const DB_URL = FIREBASE_CONFIG.databaseURL + '/proyectos';
         
-        let firebaseInitialized = false;
-        let database = null;
-        
-        firebaseDbScript.onload = () => {
-            if (!firebaseInitialized) {
-                firebase.initializeApp(FIREBASE_CONFIG);
-                database = firebase.database();
-                firebaseInitialized = true;
-                console.log('✅ Firebase (adminpaneluser-2467b) berhasil diinisialisasi');
-            }
-        };
+        // Inisialisasi Firebase
+        if (!firebase.apps.length) {
+            firebase.initializeApp(FIREBASE_CONFIG);
+        }
 
-        // KREDENSIAL - HASH SHA-256
-        // KREDENSIAL - HASH SHA-256
-        const = {
+        // KREDENSIAL - HASH SHA-256 (VARIABEL _h SUDAH DIPERBAIKI)
+        const _h = {
           "3bf17180bfcdde509c372f8836ecfc91460b5cf8be0bd7f1fa02cdd4beee9180": "510c4d4452f10b27beec16cb834f378051a8cc28f7311100f73b30bd6b8cff66"
-        } 
+        };
 
         async function _sha256(str) {
             const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -1274,7 +1261,7 @@
         };
 
         // TAB
-        function cambiarTab(tabName) {
+        function cambiarTab(tabName, evt) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
             });
@@ -1283,7 +1270,7 @@
             });
 
             document.getElementById(`tab-${tabName}`).classList.add('active');
-            event.target.classList.add('active');
+            if(evt && evt.target) evt.target.classList.add('active');
 
             if (tabName === 'historial') {
                 renderHistorial();
@@ -1340,7 +1327,6 @@
                 .catch(error => {
                     setStatus('error', '❌ Kesalahan: ' + error.message);
                     console.error('Error Firebase:', error);
-                    alert('⚠️ Gagal terhubung ke Firebase.\nCek konsol untuk detail selengkapnya.');
                 });
         }
 
@@ -1367,7 +1353,6 @@
             .catch(error => {
                 setStatus('error', '❌ Gagal menyimpan: ' + error.message);
                 console.error('Error:', error);
-                alert('⚠️ Gagal menyimpan ke Firebase.\nCek konsol untuk detail selengkapnya.');
             });
         }
 
@@ -1431,23 +1416,14 @@
                 setStatus('conectado', '✅ Proyek berhasil diinisialisasi!');
                 agregarLog('🚀 Proyek awal dibuat: MODSLJAK Victor dan EMERSON HACKS');
                 
-                alert(
-                    '✅ PROYEK BERHASIL DIBUAT!\n\n' +
-                    'Telah diinisialisasi:\n\n' +
-                    '✓ MODSLJAK Victor\n' +
-                    '✓ EMERSON HACKS\n\n' +
-                    'Situs web Anda sekarang terhubung dengan benar.\n\n' +
-                    'Muat ulang situs web Anda untuk memverifikasi koneksi.'
-                );
-                
+                alert('✅ PROYEK BERHASIL DIBUAT!');
                 setTimeout(() => {
                     cargarProyectos();
-                }, 2000);
+                }, 1000);
             })
             .catch(error => {
                 setStatus('error', '❌ Gagal menginisialisasi: ' + error.message);
                 console.error('Error:', error);
-                alert('⚠️ Gagal menginisialisasi proyek.\nCek konsol untuk detail selengkapnya.');
             });
         }
 
@@ -1457,16 +1433,8 @@
             lista.innerHTML = '';
 
             for (let [id, proyecto] of Object.entries(proyectos)) {
-                const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
-                
-                if (!proyecto || 
-                    !proyecto.nombre || 
-                    proyecto.nombre === 'undefined' ||
-                    proyecto.cliente === 'undefined' ||
-                    !esIDValido) {
-                    console.warn('⚠️ Proyek tidak valid diabaikan:', id, proyecto);
-                    continue;
-                }
+                if (!proyecto || !proyecto.nombre) continue;
+
                 const expira = new Date(proyecto.expira);
                 const hoy = new Date();
                 const diasRestantes = Math.ceil((expira - hoy) / (1000 * 60 * 60 * 24));
@@ -1556,11 +1524,7 @@
         }
 
         function actualizarEstadisticas(proyectos) {
-            const proyectosValidos = Object.entries(proyectos).filter(([id, p]) => {
-                const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
-                return p && p.nombre && p.nombre !== 'undefined' && 
-                       p.cliente !== 'undefined' && esIDValido;
-            });
+            const proyectosValidos = Object.entries(proyectos).filter(([id, p]) => p && p.nombre);
             
             const total = proyectosValidos.length;
             let activos = 0, inactivos = 0, sinPagar = 0, enMantenimiento = 0, totalClicks = 0;
@@ -1770,11 +1734,7 @@
             const hoy = new Date();
             const alertas = [];
             
-            const proyectosValidos = Object.entries(proyectosData).filter(([id, p]) => {
-                const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
-                return p && p.nombre && p.nombre !== 'undefined' && 
-                       p.cliente !== 'undefined' && esIDValido;
-            });
+            const proyectosValidos = Object.entries(proyectosData).filter(([id, p]) => p && p.nombre);
             
             for (let [id, proyecto] of proyectosValidos) {
                 const expira = new Date(proyecto.expira);
@@ -1829,6 +1789,7 @@
             proyectos.forEach(div => {
                 const id = div.getAttribute('data-id');
                 const proyecto = proyectosData[id];
+                if (!proyecto) return;
                 
                 const textoProyecto = `${proyecto.nombre} ${proyecto.cliente} ${id}`.toLowerCase();
                 const coincideBusqueda = textoProyecto.includes(searchTerm);
@@ -1849,11 +1810,7 @@
             const container = document.getElementById('analytics-container');
             container.innerHTML = '';
 
-            const entries = Object.entries(proyectosData).filter(([id, p]) => {
-                const esIDValido = id.startsWith('modsljak_') || id.startsWith('emerson_');
-                return p && p.nombre && p.nombre !== 'undefined' && 
-                       p.cliente !== 'undefined' && esIDValido;
-            });
+            const entries = Object.entries(proyectosData).filter(([id, p]) => p && p.nombre);
             
             if (entries.length === 0) {
                 container.innerHTML = '<p style="color:#888;text-align:center;padding:20px;">Belum ada proyek</p>';
