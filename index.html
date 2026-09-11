@@ -34,9 +34,7 @@
                 radial-gradient(circle at 80% 80%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
         }
 
-        /* ============================================
-           LAYAR LOGIN
-           ============================================ */
+        /* LAYAR LOGIN */
         .login-container {
             display: flex;
             justify-content: center;
@@ -140,9 +138,7 @@
             display: none;
         }
 
-        /* ============================================
-           PANEL UTAMA
-           ============================================ */
+        /* PANEL UTAMA */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -876,9 +872,7 @@
 </head>
 <body>
 
-    <!-- ============================================
-         LAYAR LOGIN
-         ============================================ -->
+    <!-- LAYAR LOGIN -->
     <div id="login-container" class="login-container">
         <div class="login-box">
             <div class="login-logo">🎮</div>
@@ -907,9 +901,7 @@
         </div>
     </div>
 
-    <!-- ============================================
-         PANEL UTAMA
-         ============================================ -->
+    <!-- PANEL UTAMA -->
     <div id="main-container" class="container">
         
         <!-- Header -->
@@ -1115,7 +1107,7 @@
 
             <div class="modal-buttons">
                 <button class="btn btn-tiempo" onclick="agregarTiempoCustom()">✓ Terapkan Kustom</button>
-                <button class="btn btn-desactivar" onclick="cerrarModal()">✗ Batal</button>
+                <button class="btn btn-desactivar" onclick="cerrarModal()">✕ Batal</button>
             </div>
         </div>
     </div>
@@ -1164,17 +1156,13 @@
             <div id="np-msg" style="display:none; padding:12px; border-radius:8px; margin-top:15px; font-weight:600;"></div>
             <div class="modal-buttons" style="margin-top:20px;">
                 <button class="btn btn-activar" onclick="guardarNuevoProyecto()">💾 Buat Proyek</button>
-                <button class="btn btn-desactivar" onclick="cerrarModalNuevoProyecto()">✗ Batal</button>
+                <button class="btn btn-desactivar" onclick="cerrarModalNuevoProyecto()">✕ Batal</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ============================================
-        // KONFIGURASI FIREBASE BARU - TERHUBUNG ✓
-        // ============================================
-        
-        // Impor Firebase SDK
+        // KONFIGURASI FIREBASE BARU
         const firebaseScript = document.createElement('script');
         firebaseScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js';
         document.head.appendChild(firebaseScript);
@@ -1183,9 +1171,8 @@
         firebaseDbScript.src = 'https://www.gstatic.com/firebasejs/10.7.1/firebase-database-compat.js';
         document.head.appendChild(firebaseDbScript);
 
-        // Konfigurasi Firebase dari URL Baru
         const FIREBASE_CONFIG = {
-            apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU", // Masukkan API Key proyek adminpaneluser-2467b jika ada
+            apiKey: "AIzaSyBeNbkwo2M8xsxZPmfwCI2wRUnAg1mhGaU",
             authDomain: "adminpaneluser-2467b.firebaseapp.com",
             databaseURL: 'https://adminpaneluser-2467b-default-rtdb.firebaseio.com',
             projectId: "adminpaneluser-2467b",
@@ -1196,7 +1183,6 @@
 
         const DB_URL = FIREBASE_CONFIG.databaseURL + '/proyectos';
         
-        // Inisialisasi Firebase saat skrip dimuat
         let firebaseInitialized = false;
         let database = null;
         
@@ -1209,11 +1195,7 @@
             }
         };
 
-
-        // ============================================
         // KREDENSIAL - HASH SHA-256
-        // ============================================
-
         const _h = {
             '\x37\x65\x37\x65\x38\x62\x30\x30\x37\x64\x31\x61\x63\x32\x38\x30\x66\x63\x61\x30\x31\x38\x65\x34\x30\x33\x31\x66\x63\x65\x36\x38\x61\x64\x39\x32\x39\x30\x36\x64\x38\x32\x34\x33\x31\x31\x32\x35\x38\x32\x64\x32\x37\x30\x35\x32\x33\x64\x63\x31\x38\x31\x37\x36':
             '\x38\x38\x39\x31\x64\x39\x34\x65\x61\x32\x30\x33\x32\x36\x37\x63\x63\x66\x64\x34\x33\x34\x38\x39\x62\x32\x33\x64\x65\x34\x39\x63\x33\x35\x62\x35\x65\x33\x64\x61\x62\x61\x61\x62\x62\x66\x35\x38\x66\x64\x39\x35\x36\x66\x63\x30\x37\x61\x64\x38\x63\x32\x66\x34'
@@ -1228,10 +1210,7 @@
         let proyectoActual = null;
         let activityLog = JSON.parse(localStorage.getItem('activityLog') || '[]');
 
-        // ============================================
         // LOGIN
-        // ============================================
-
         async function login() {
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value;
@@ -1294,10 +1273,7 @@
             }
         };
 
-        // ============================================
         // TAB
-        // ============================================
-
         function cambiarTab(tabName) {
             document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.remove('active');
@@ -1320,10 +1296,7 @@
             }
         }
 
-        // ============================================
         // MUAT PROYEK DARI FIREBASE
-        // ============================================
-
         function setStatus(tipo, mensaje) {
             const indicator = document.getElementById('status-indicator');
             const text = document.getElementById('status-text');
@@ -1345,7 +1318,7 @@
                     if (Object.keys(proyectosData).length === 0) {
                         setStatus('error', '⚠️ Basis data kosong - Inisialisasi proyek');
                         document.getElementById('btn-inicializar').style.display = 'block';
-                        document.getElementById('proyectos-container').innerHTML = `
+                        document.getElementById('proyectos-lista').innerHTML = `
                             <div style="text-align: center; padding: 60px; background: rgba(255,107,0,0.1); border: 2px solid var(--warning); border-radius: 15px; margin: 20px 0;">
                                 <h2 style="color: var(--warning); margin-bottom: 20px;">⚠️ Basis Data Kosong</h2>
                                 <p style="color: #ccc; font-size: 1.1rem; margin-bottom: 15px;">Tidak ada proyek terdaftar di Firebase.</p>
@@ -1371,10 +1344,7 @@
                 });
         }
 
-        // ============================================
         // SIMPAN PERUBAHAN KE FIREBASE
-        // ============================================
-
         function guardarCambios() {
             setStatus('guardando', '💾 Menyimpan ke Firebase...');
 
@@ -1401,10 +1371,7 @@
             });
         }
 
-        // ============================================
         // INISIALISASI PROYEK OTOMATIS
-        // ============================================
-        
         function inicializarProyectos() {
             const confirmar = confirm(
                 '🚀 INISIALISASI PROYEK DI FIREBASE\n\n' +
@@ -1484,10 +1451,7 @@
             });
         }
 
-        // ============================================
         // TAMPILKAN PROYEK
-        // ============================================
-
         function renderProyectos(proyectos) {
             const lista = document.getElementById('proyectos-lista');
             lista.innerHTML = '';
@@ -1537,7 +1501,7 @@
                         <div class="info-item">
                             <div class="info-label">💳 Status Pembayaran</div>
                             <div class="info-value" style="color: ${proyecto.pagado ? 'var(--success)' : 'var(--danger)'};">
-                                ${proyecto.pagado ? 'Lunas ✓' : 'Pending ✗'}
+                                ${proyecto.pagado ? 'Lunas ✓' : 'Pending ✕'}
                             </div>
                         </div>
                         <div class="info-item">
@@ -1553,9 +1517,9 @@
                             <div class="info-label">🛒 Klik Hari Ini / Total</div>
                             <div class="info-value" style="color: var(--success);">
                                 ${(() => {
-                                    const hoy = new Date().toISOString().split('T')[0];
+                                    const hoyStr = new Date().toISOString().split('T')[0];
                                     const dias = proyecto.clics_por_dia || {};
-                                    const hoyN = dias[hoy] || 0;
+                                    const hoyN = dias[hoyStr] || 0;
                                     const total = Object.values(dias).reduce((a,b) => a+b, 0);
                                     return `${hoyN} hari ini / ${total} total`;
                                 })()}
@@ -1616,10 +1580,7 @@
             document.getElementById('total-clicks').textContent = totalClicks;
         }
 
-        // ============================================
         // FUNGSI KONTROL
-        // ============================================
-
         function toggleActivacion(id, nuevoEstado) {
             const proyecto = proyectosData[id];
             const accion = nuevoEstado ? 'mengaktifkan' : 'menonaktifkan';
@@ -1683,10 +1644,7 @@
             }
         }
 
-        // ============================================
         // AKSI CEPAT
-        // ============================================
-
         function bloquearNoPagados() {
             if (!confirm('Apakah Anda ingin menonaktifkan SEMUA situs yang belum bayar?')) return;
             
@@ -1767,10 +1725,7 @@
             }
         }
 
-        // ============================================
         // RIWAYAT
-        // ============================================
-
         function agregarLog(accion) {
             const log = {
                 fecha: new Date().toISOString(),
@@ -1807,10 +1762,7 @@
             });
         }
 
-        // ============================================
         // PERINGATAN
-        // ============================================
-
         function generarAlertas() {
             const container = document.getElementById('alertas-container');
             container.innerHTML = '';
@@ -1867,10 +1819,7 @@
             });
         }
 
-        // ============================================
         // FILTER
-        // ============================================
-
         function filtrarProyectos() {
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
             const filtroEstado = document.getElementById('filter-estado').value;
@@ -1895,10 +1844,7 @@
             });
         }
 
-        // ============================================
         // ANALITIK - KLIK PEMBELIAN
-        // ============================================
-
         function renderAnalytics() {
             const container = document.getElementById('analytics-container');
             container.innerHTML = '';
@@ -1971,7 +1917,7 @@
                         <div class="analytics-badges">
                             <span class="badge-hoy">Hari ini: ${hoyClicks}</span>
                             <span class="badge-total">Total: ${total}</span>
-                            <button class="click-reset-btn" onclick="event.stopPropagation(); resetClicks('${id}')">🗑 Reset</button>
+                            <button class="click-reset-btn" onclick="event.stopPropagation(); resetClicks('${id}')">🗑️ Reset</button>
                             <span class="toggle-arrow">▼</span>
                         </div>
                     </div>
@@ -2011,17 +1957,14 @@
             proyectosData[id].clics_por_dia = {};
             proyectosData[id].clics_compra = 0;
             proyectosData[id].ultima_actualizacion = new Date().toISOString().split('T')[0];
-            agregarLog(`🗑 Klik diatur ulang: ${nombre}`);
+            agregarLog(`🗑️ Klik diatur ulang: ${nombre}`);
             guardarCambios();
             renderAnalytics();
             actualizarEstadisticas(proyectosData);
             alert(`✅ Klik untuk "${nombre}" berhasil diatur ulang`);
         }
 
-        // ============================================
         // MANAJEMEN PENGGUNA
-        // ============================================
-
         async function agregarUsuario() {
             const usu = document.getElementById('nuevo-usuario').value.trim();
             const pass = document.getElementById('nueva-contrasena').value;
@@ -2100,10 +2043,10 @@
                     <span style="font-size:1.3rem;">👤</span>
                     <div style="flex:1;">
                         <div style="font-weight:700; color:#fff;">${nombre}</div>
-                        <div style="color:#888; font-size:0.8rem;">Kata sandi: ••••••• (dilindungi)</div>
+                        <div style="color:#888; font-size:0.8rem;">Kata sandi: •••••••• (dilindungi)</div>
                     </div>
                     <button onclick="eliminarUsuario('${hUser}', '${nombre}')" style="padding:6px 14px; background:rgba(255,0,110,0.15); border:1px solid var(--danger); color:var(--danger); border-radius:6px; cursor:pointer; font-weight:600; font-size:0.85rem;">
-                        🗑 Hapus
+                        🗑️ Hapus
                     </button>
                 `;
                 lista.appendChild(div);
@@ -2118,14 +2061,11 @@
             delete nombres[hUser];
             localStorage.setItem('_usuarios_extras', JSON.stringify(extras));
             localStorage.setItem('_usuarios_nombres', JSON.stringify(nombres));
-            agregarLog(`🗑 Pengguna dihapus: ${nombre}`);
+            agregarLog(`🗑️ Pengguna dihapus: ${nombre}`);
             renderUsuarios();
         }
 
-        // ============================================
         // MANAJEMEN PROYEK - BUAT BARU
-        // ============================================
-
         function abrirModalNuevoProyecto() {
             const hoy = new Date();
             hoy.setDate(hoy.getDate() + 30);
@@ -2189,7 +2129,6 @@
                 cerrarModalNuevoProyecto();
             }, 1500);
         }
-
     </script>
 </body>
 </html>
